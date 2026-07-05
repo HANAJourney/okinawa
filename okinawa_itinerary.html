@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>沖繩親子九日行 2026.07.12–20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep: #0B4F6C;
+    --deep2:#083B52;
+    --coral:#FF6B4A;
+    --sun:#FFB627;
+    --sand:#F5F1E6;
+    --foam:#EAF4F1;
+    --ink:#123A40;
+    --line:#D8E6E2;
+    --good:#2E9E6B;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Noto Sans TC', sans-serif;
+    padding-bottom:84px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .display{font-family:'Zen Maru Gothic','Archivo', sans-serif;}
+
+  header{
+    background:linear-gradient(160deg, var(--deep) 0%, var(--deep2) 100%);
+    color:#fff;
+    padding:22px 18px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:-2px; height:26px;
+    background:
+      radial-gradient(circle at 10px 0, transparent 12px, var(--deep2) 13px) 0 -13px/40px 26px repeat-x;
+    opacity:.5;
+  }
+  header .eyebrow{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--sun); font-weight:700; display:block; margin-bottom:6px;
+  }
+  header h1{margin:0 0 6px; font-size:26px; line-height:1.25;}
+  header .sub{font-size:13px; opacity:.85; line-height:1.6;}
+  header .flights{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;}
+  .pill{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:6px 12px; border-radius:100px; font-size:12px;
+  }
+  .pill b{color:var(--sun);}
+  .pill.flight-badge{
+    background:rgba(255,107,74,.16); border-color:rgba(255,107,74,.4);
+  }
+
+  .rail-wrap{
+    margin:14px 18px 0;
+    background:#fff;
+    border-radius:16px;
+    padding:14px 12px 10px;
+    box-shadow:0 6px 18px rgba(11,79,108,.08);
+  }
+  .rail-title{font-size:11px; color:#7c8f8c; letter-spacing:.06em; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
+  .rail-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px;}
+  .rail-track{display:flex; align-items:center; position:relative; min-width:760px; padding:14px 6px 22px;}
+  .rail-track::before{
+    content:""; position:absolute; left:14px; right:14px; top:19px; height:3px; background:var(--line); border-radius:2px;
+  }
+  .rail-seg{flex:1; position:relative; text-align:center;}
+  .rail-dot{
+    width:10px; height:10px; border-radius:50%; background:#cfd9d6; margin:0 auto 6px; position:relative; z-index:2;
+    border:2px solid #fff;
+  }
+  .rail-seg.active .rail-dot{background:var(--coral); width:13px; height:13px;}
+  .rail-seg .name{font-size:10px; color:#93a29e; white-space:nowrap;}
+  .rail-seg.active .name{color:var(--coral); font-weight:700;}
+  .rail-seg .code{position:absolute; top:-13px; left:50%; transform:translateX(-50%); font-size:9px; color:#c3cdca;}
+
+  nav.daynav{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:#fff;
+    border-top:1px solid var(--line);
+    display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    box-shadow:0 -6px 18px rgba(11,79,108,.10);
+  }
+  nav.daynav button{
+    flex:0 0 auto; min-width:56px;
+    border:none; background:none; padding:9px 6px 8px;
+    font-family:inherit; cursor:pointer; color:#9fb0ac;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+  }
+  nav.daynav button .d{font-size:14px; font-weight:800;}
+  nav.daynav button .w{font-size:9.5px;}
+  nav.daynav button.active{color:var(--coral);}
+  nav.daynav button.active .d{color:var(--coral);}
+
+  main{padding:16px 18px 10px;}
+  .day{display:none;}
+  .day.active{display:block; animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+  .day-head{margin-bottom:14px;}
+  .day-head .num{font-size:12px; color:var(--coral); font-weight:700; letter-spacing:.08em;}
+  .day-head h2{margin:2px 0 4px; font-size:21px;}
+  .day-head .meta{font-size:12.5px; color:#5c706c;}
+
+  .flex-banner{
+    background:linear-gradient(120deg,#FFF3E6,#FFF9EE);
+    border:1px solid #FFDDB0; color:#8A5A22;
+    border-radius:14px; padding:10px 13px; font-size:12.5px; line-height:1.7; margin-bottom:14px;
+  }
+
+  .sub-day{margin-bottom:22px; padding-bottom:4px; border-bottom:1px dashed var(--line);}
+  .sub-day:last-child{border-bottom:none;}
+  .sub-day-head{display:flex; align-items:baseline; gap:8px; margin-bottom:10px;}
+  .sub-day-head .tag{
+    background:var(--deep); color:#fff; font-size:11px; font-weight:700;
+    padding:3px 9px; border-radius:100px;
+  }
+  .sub-day-head .ttl{font-size:15.5px; font-weight:700;}
+  .sub-day-head .wk{font-size:12px; color:#7c8f8c;}
+
+  .card{
+    background:#fff; border-radius:16px; padding:14px 15px; margin-bottom:12px;
+    box-shadow:0 4px 14px rgba(11,79,108,.06);
+    border:1px solid #eef3f1;
+  }
+  .card h3{
+    margin:0 0 10px; font-size:13px; display:flex; align-items:center; gap:7px;
+    color:var(--deep); letter-spacing:.02em;
+  }
+  .card h3 .ico{
+    width:22px; height:22px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+    background:var(--foam); font-size:13px; flex:none;
+  }
+  .card h3 .tag-transfer{
+    margin-left:auto; background:var(--foam); color:var(--good); font-size:10.5px; font-weight:700;
+    padding:2px 9px; border-radius:100px; letter-spacing:.03em;
+  }
+  .card p{margin:0; font-size:13.5px; line-height:1.75; color:#33463f;}
+  .card ul{margin:0; padding-left:18px; font-size:13.5px; line-height:1.8; color:#33463f;}
+  .card li{margin-bottom:2px;}
+  .note{
+    background:#FFF7ED; border:1px solid #FFE3C4; color:#8A5A22;
+    border-radius:12px; padding:10px 12px; font-size:12.5px; line-height:1.7; margin-top:6px;
+  }
+  .ticket{
+    background:var(--foam); border-radius:12px; padding:10px 12px; font-size:12.5px; line-height:1.7; color:#245049;
+  }
+  .ticket a{color:var(--deep); font-weight:700;}
+
+  a.mapchip{
+    display:inline-flex; align-items:center; gap:5px;
+    background:var(--foam); color:var(--deep); text-decoration:none;
+    border-radius:100px; padding:3px 10px 3px 8px; font-size:12.5px; font-weight:500;
+    border:1px solid #DCEAE6; margin:2px 4px 2px 0;
+  }
+  a.mapchip:active{background:var(--coral); color:#fff; border-color:var(--coral);}
+  a.mapchip .pin{font-size:12px;}
+
+  /* Timeline (Day2 / Day3 詳細行程) */
+  .timeline{list-style:none; margin:0; padding:0;}
+  .timeline li{
+    display:flex; gap:10px; padding:9px 0; border-bottom:1px solid #F1F5F3;
+  }
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .time{
+    flex:0 0 52px; font-size:12px; font-weight:800; color:var(--deep); padding-top:1px;
+  }
+  .timeline .body{flex:1; font-size:13.5px; line-height:1.7; color:#33463f;}
+  .timeline .body .ttl{font-weight:700; color:var(--ink); display:block; margin-bottom:2px;}
+  .timeline li.transfer .body{color:#7c8f8c; font-style:normal;}
+  .timeline li.transfer .time{color:#9fb0ac;}
+  .transfer-chip{
+    display:inline-flex; align-items:center; gap:4px;
+    background:#EFF3F1; color:#5c706c; font-size:11px; font-weight:700;
+    padding:2px 9px; border-radius:100px; margin-right:6px;
+  }
+
+  .price{color:var(--coral); font-weight:700;}
+  .divider{height:1px; background:var(--line); margin:10px 0;}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow display">Okinawa · 2026.07.12 – 07.20</span>
+  <h1 class="display">沖繩親子九日行</h1>
+  <div class="sub">大人 + 小孩・那霸東急REI飯店（旭橋站）為主要落腳點</div>
+  <div class="flights">
+    <span class="pill flight-badge">去程 <b>JX870</b> 7/12 PM2:40</span>
+    <span class="pill flight-badge">回程 <b>JX871</b> 7/20 PM3:50</span>
+    <span class="pill">住宿 <b>旭橋站｜那霸東急REI</b></span>
+  </div>
+</header>
+
+<div class="rail-wrap">
+  <div class="rail-title">
+    <span>ゆいレール Yui-Rail 單軌路線・當日相關站點</span>
+    <span id="railDayLabel" style="color:var(--coral); font-weight:700;">Day 1</span>
+  </div>
+  <div class="rail-scroll">
+    <div class="rail-track" id="railTrack"></div>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<nav class="daynav" id="daynav"></nav>
+
+<script>
+const MAP_DIR = q => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
+const mapChip = (label, query) => `<a class="mapchip" target="_blank" rel="noopener" href="${MAP_DIR(query)}"><span class="pin">📍</span>${label}</a>`;
+const transferChip = `<span class="transfer-chip">🔄 轉移</span>`;
+
+const RAIL = [
+  {c:'01', n:'那覇機場'}, {c:'02', n:'赤嶺'}, {c:'03', n:'小祿'}, {c:'04', n:'奧武山公園'},
+  {c:'05', n:'壺川'}, {c:'06', n:'旭橋'}, {c:'07', n:'縣政府前'}, {c:'08', n:'美榮橋'},
+  {c:'09', n:'牧志'}, {c:'10', n:'安里'}, {c:'11', n:'Omoromachi'}, {c:'12', n:'古島'},
+  {c:'13', n:'市立醫院前'}, {c:'14', n:'儀保'}, {c:'15', n:'首里'}, {c:'16', n:'石岭'},
+  {c:'17', n:'經塚'}, {c:'18', n:'浦添前田'}, {c:'19', n:'Tedako浦西'}
+];
+
+// ---- Day2 詳細時刻表 ----
+const D2_TIMELINE = [
+  {time:'08:30', ttl:'去程集合', desc:`縣廳前觀光巴士乘降站集合出發`, transfer:true},
+  {time:'09:20', ttl:'NIRAIKANAI大橋（車上導覽・不停靠）', desc:'巴士減速緩行通過大橋，車上欣賞多層次夢幻大海與蔚藍天空絕景。※如遇交通路況不佳可能不會經過。', transfer:true},
+  {time:'09:40', ttl:`知念岬公園（30分鐘自由活動） ${mapChip('知念岬公園','知念岬公園')}`, desc:'三面環海，海天一色，可眺望對岸神之島久高島。階梯延伸至草地，是IG、小紅書熱門打卡點。'},
+  {time:'10:25', ttl:`新原海灘（45分鐘自由活動） ${mapChip('新原海灘','新原ビーチ')}`, desc:'可自由漫步沙灘，或向導遊優惠加購玻璃船票，透過透明船底欣賞珊瑚礁、熱帶魚，幸運還可能遇見海龜。玻璃船休業或停航時恕無法現場加購。'},
+  {time:'11:25', ttl:`沖繩世界文化王國・玉泉洞（2小時自由活動） ${mapChip('沖繩世界文化王國','おきなわワールド')}`, desc:'方案已含門票。沖繩最大鐘乳石洞「玉泉洞」為必遊景點，園內可看免費EISA太鼓表演、波布蛇表演秀，也可自費體驗傳統工藝。'},
+  {time:'14:00', ttl:`糸満漁市場（1小時自由活動） ${mapChip('糸満漁市場','糸満漁民食堂')}`, desc:'沖繩必吃美食景點之一，海鮮品種齊全新鮮，價格比市區便宜，生食熟食應有盡有。'},
+  {time:'15:10', ttl:`ASHIBINAA Outlet（自由活動） ${mapChip('沖繩奧特萊斯商城 Ashibinaa','沖縄アウトレットモールあしびなー')}`, desc:'可選擇在 Ashibinaa Outlet 停留約110分鐘購物，享優惠價格。'},
+  {time:'17:10', ttl:`瀨長島 Umikaji Terrace（50分鐘自由活動） ${mapChip('瀨長島 Umikaji Terrace','瀬長島ウミカジテラス')}`, desc:'純白建築配絕美海景，人稱「沖繩小希臘」，可近距離欣賞飛機起降，聚集40多家特色咖啡、餐飲、伴手禮店，好吃好買好拍。'},
+  {time:'18:30', ttl:'回程', desc:'返回原集合地點，解散。', transfer:true},
+];
+
+const DAYS = [
+  {
+    key:'d1', d:'Day 1', w:'7/12（日）', title:'抵達沖繩・入住旭橋', rail:['那覇機場','旭橋'],
+    flightBadge:'✈️ 去程班機　JX870　出發 PM12:00　｜　抵達 PM2:40',
+    breakfast:'送機 Kkday AM9:15<br>Check in Naha Tokyu Rei Hotel（Klook）',
+    transport:`JX870 下午2:40 抵達。國內線航廈2樓連通橋走到單軌電車（Yui-Rail）「那霸機場站」，搭乘5站至「旭橋站」（約11分鐘）→ 那霸東急REI 辦理入住。${mapChip('那霸東急REI飯店','那覇東急REIホテル')}`,
+    sights:['Check in 那霸東急REI飯店','附近逛逛熟悉環境，先確認 Day2、Day3 集合點','買明日早餐','吃晚餐'],
+    ticket:'單軌票價：成人 ¥270 / 兒童 ¥140',
+    note:''
+  },
+  {
+    key:'d2', d:'Day 2', w:'7/13（一）', title:'沖繩南部一日遊', rail:['旭橋','縣政府前'],
+    breakfast:'自備',
+    transport:`${transferChip} 沖繩南部一日團（Klook／易遊網）08:30 於「縣廳前觀光巴士乘降站」集合，位於 Palette Kumoji 百貨前方。${mapChip('縣廳前觀光巴士乘降站','沖縄県庁前観光バス乗降場')} 搭單軌：旭橋站 → 縣廳前站（1站，約2分鐘），或沿國道58號／單軌下方步行約8-10分鐘。`,
+    timeline:D2_TIMELINE,
+    sights:['回程後：逛 Palette Kumoji 百貨或直接進入國際通吃晚餐'],
+    ticket:`成人 × 1、兒童 × 1<br>訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-143435" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-143435</a>`,
+    note:''
+  },
+  {
+    key:'d3', d:'Day 3', w:'7/14（二）', title:'慶良間浮潛・波上宮夕陽', rail:['旭橋','美榮橋'],
+    breakfast:'自備',
+    transport:`${transferChip} 8:30 上車，接送人員到齊後前往那霸三重城港（${mapChip('那霸三重城港','那覇マリーナ')}）。搭船30分鐘 → 浮潛約3小時 → 搭船30分鐘返回那霸三重城港，約12:30返回原集合地點。中餐後再接續下午行程。`,
+    sights:[
+      '那霸慶良間半日浮潛　訂單編號 ORD0031043352',
+      `下午：波上宮 ${mapChip('波上宮','波上宮')}　— 建於懸崖上，可眺望湛藍海景，步行約15分鐘可達，適合帶小朋友`,
+      `波之上海灘 ${mapChip('波之上海灘','波の上ビーチ')}`,
+      `三重城公園（看飛機起降＋夕陽） ${mapChip('三重城公園','三重城公園')}`,
+      `晚餐：牧志公設市場 ${mapChip('牧志公設市場','第一牧志公設市場')} 或國際通周邊（步行或單軌一站到縣廳前／美榮橋）`
+    ],
+    ticket:'—',
+    note:'波上宮周圍就是波之上海灘，適合帶小朋友踩沙、吹海風。'
+  },
+  {
+    key:'d4', d:'Day 4', w:'7/15（三）', title:'首里散策・末吉公園', rail:['旭橋','首里','市立醫院前'],
+    breakfast:'自備',
+    transport:`${transferChip} 單軌旭橋站 → 首里站（約15分鐘），步行約5分鐘。轉移：首里站 → 市立醫院前站（2站），步行至末吉公園約2-5分鐘。`,
+    sights:[
+      `西來院（達摩寺）7:00 開，首里站步行約5分鐘 ${mapChip('西來院 達摩寺','西来院')}`,
+      `首里城外圍／金城町石疊道 ${mapChip('金城町石疊道','金城町石畳道')}`,
+      '午餐：首里そば（沖繩麵）',
+      `末吉公園＋末吉宮神社 ${mapChip('末吉公園','末吉公園')}`
+    ],
+    ticket:'FunPASS 首里達磨寺：開金運口金包御守 +1（大人）　｜　沖繩首里城公園收費區域門票另購：中小學生 ¥160／成人 ¥400',
+    note:''
+  },
+  {
+    key:'d5to8', d:'Day 5-8', w:'7/16–7/19', title:'豐崎・兒童王國・壺屋・OkiMu（機動彈性四天）', rail:['旭橋','奧武山公園','牧志','Omoromachi'],
+    flexNote:'以下 4 天（7/16–7/19）順序將視天氣（尤其颱風季）機動彈性調整，故合併顯示於同一頁面，方便對照。',
+    subDays:[
+      {
+        tag:'7/16（四）', ttl:'DMM水族館・iias豐崎', breakfast:'飯店',
+        transport:`${transferChip} 飯店旁「那霸巴士總站」搭乘 TK02（Umikaji Liner／琉球巴士）直達「iias 沖繩豐崎」商場（車程約30-40分鐘）。${mapChip('那霸巴士總站','那覇バスターミナル')} ${mapChip('iias沖繩豐崎','イーアス沖縄豊崎')}`,
+        sights:[
+          'DMM Kariyushi 水族館（位於 iias豐崎2F）＆ TeamLab Future Park Okinawa',
+          'iias 沖繩豐崎 Outlet 購物',
+          `豐崎海濱公園（美麗SUN海灘）— 就在 iias 旁，步行可達，看飛機起降的白沙灘 ${mapChip('豐崎海濱公園 美麗SUNビーチ','豊崎海浜公園 美らSUNビーチ')}`
+        ],
+        ticket:'FunPASS：DMM Kariyushi水族館門票 +2　｜　Kirara Cafe 咖哩套餐 +2　｜　Kirara Cafe 甜點套餐 +1　（成人 ¥2,800–3,200／兒童4–12歲 ¥1,700–2,100）',
+        note:'iias沖繩豐崎賣場2樓有專屬通道連接 DMM Kariyushi水族館。FunPASS若沒用完：咖哩套餐一份約 NT$425，甜點套餐一份約 NT$320。'
+      },
+      {
+        tag:'7/17（五）', ttl:'沖繩兒童王國・國際通', breakfast:'飯店',
+        transport:`${transferChip} 「那霸巴士總站」${mapChip('那霸巴士總站','那覇バスターミナル')} 搭乘 23、27、31、77 或 90 號公車至「中の町」站下車（車程約50-60分鐘），下車後步行約15分鐘（或計程車）至沖繩兒童王國。`,
+        sights:[
+          `沖繩兒童王國動物園（查氣象，最晚 7/19 前去） ${mapChip('沖繩兒童王國','沖縄こどもの国')}`,
+          `晚上：國際通（步行或單軌一站到縣廳前／美榮橋） ${mapChip('國際通','国際通り')}`
+        ],
+        ticket:'FunPASS：沖繩兒童王國門票 +1（大人）　｜　16歲以上 ¥1,000／15歲以下免費',
+        note:''
+      },
+      {
+        tag:'7/18（六）', ttl:'奧武山公園・壺屋やちむん通り', breakfast:'飯店',
+        transport:`${transferChip} 單軌旭橋站 → 奧武山公園站（1站）。奧武山公園 →（單軌約4站至牧志／美榮橋）→ 壺屋やちむん通り。牧志站徒步約10分鐘可達，建議走平和通商店街，夏天較涼爽也有很多店家。`,
+        sights:[
+          `奧武山公園 — 適合晨跑、散步、親子遊玩與欣賞綠意 ${mapChip('奧武山公園','奥武山公園')}`,
+          `壺屋やちむん通り（陶器街） ${mapChip('壺屋やちむん通り','壺屋やちむん通り')}`,
+          `牧志公設市場周邊，連接和平通等復古商店街，可買沙翁（沖繩炸甜甜圈）等在地點心 ${mapChip('牧志公設市場','第一牧志公設市場')}`,
+          '傍晚可散步到國際通尾端或直接單軌回旭橋'
+        ],
+        ticket:'—',
+        note:''
+      },
+      {
+        tag:'7/19（日）', ttl:'OkiMu博物館・新都心公園', breakfast:'飯店',
+        transport:`${transferChip} 單軌旭橋站 → おもろまち站（歌町站，約11分鐘），步行約5分鐘。`,
+        sights:[
+          `上午：OkiMu 沖繩縣立博物館・美術館（9:00開館，恐龍化石、藝術展可慢慢逛） ${mapChip('OkiMu 沖繩縣立博物館美術館','沖縄県立博物館・美術館')}`,
+          `步行到 San-A Naha Main Place 吃午餐、逛街（超市、美食街對小孩方便） ${mapChip('San-A Naha Main Place','サンエー那覇メインプレイス')}`,
+          `下午：新都心公園（就在旁邊，太陽大先進室內，等較弱再去公園放鬆） ${mapChip('新都心公園','那覇新都心公園')}`
+        ],
+        ticket:'—',
+        note:''
+      },
+    ]
+  },
+  {
+    key:'d9', d:'Day 9', w:'7/20（一）', title:'AEON採買・返程', rail:['旭橋','小祿','那覇機場'],
+    breakfast:'有',
+    flightBadge:'✈️ 回程班機　JX871　出發 PM3:50　｜　抵達 PM4:25',
+    transport:`${transferChip} 單軌旭橋站 → 小祿站（3站，約6分鐘）→ 那覇機場站（2站，約5分鐘）。`,
+    sights:[
+      'Check out',
+      `AEON 那霸店 — 與小祿站有空橋直通 ${mapChip('AEON那霸店','イオン那覇店')}`,
+      `午餐推薦：小祿站旁的通堂拉麵（男麵／女麵），採買完可順道午餐後直接前往機場 ${mapChip('通堂拉麵 小祿店','通堂 小禄店')}`,
+      '13:00 到機場，國內線、國際線商店也很好逛',
+      'JX871 下午3:50 起飛'
+    ],
+    ticket:'—',
+    note:'退房後行李可寄放小祿站投幣式置物櫃，或 AEON 內置物櫃。通堂拉麵就在車站旁，吃完直接進 AEON 做最後採買。AEON 那霸店 與 AEON Rycom 兩地待最終確認去哪一間。'
+  },
+];
+
+function renderRail(activeStations){
+  const track = document.getElementById('railTrack');
+  track.innerHTML = RAIL.map(s => {
+    const active = activeStations.includes(s.n);
+    return `<div class="rail-seg ${active?'active':''}">
+      <span class="code">${s.c}</span>
+      <div class="rail-dot"></div>
+      <div class="name">${s.n}</div>
+    </div>`;
+  }).join('');
+}
+
+function transportCard(html){
+  const clean = html.replace(transferChip,'').trim();
+  return `
+  <div class="card">
+    <h3><span class="ico">🚃</span>交通<span class="tag-transfer">轉移</span></h3>
+    <p>${clean}</p>
+  </div>`;
+}
+
+function ticketNoteBlock(day){
+  let out = '';
+  if(day.ticket && day.ticket!=='—'){
+    out += `<div class="card"><h3><span class="ico">🎟️</span>票券</h3><div class="ticket">${day.ticket}</div></div>`;
+  }
+  if(day.note){
+    out += `<div class="note">${day.note}</div>`;
+  }
+  return out;
+}
+
+function renderTimeline(items){
+  return `<div class="card"><h3><span class="ico">🕒</span>詳細時刻表</h3>
+    <ul class="timeline">
+    ${items.map(it=>`<li class="${it.transfer?'transfer':''}">
+      <div class="time">${it.time}</div>
+      <div class="body"><span class="ttl">${it.ttl}</span>${it.desc}</div>
+    </li>`).join('')}
+    </ul>
+  </div>`;
+}
+
+function renderSubDay(sub){
+  return `
+  <div class="sub-day">
+    <div class="sub-day-head">
+      <span class="tag">${sub.tag}</span>
+      <span class="ttl">${sub.ttl}</span>
+    </div>
+    <div class="card">
+      <h3><span class="ico">🍳</span>早餐</h3>
+      <p>${sub.breakfast}</p>
+    </div>
+    ${transportCard(sub.transport)}
+    <div class="card">
+      <h3><span class="ico">📌</span>景點 / 備註</h3>
+      <ul>${sub.sights.map(s=>`<li>${s}</li>`).join('')}</ul>
+    </div>
+    ${ticketNoteBlock(sub)}
+  </div>`;
+}
+
+function renderDay(day){
+  if(day.subDays){
+    return `
+    <div class="day-head">
+      <div class="num">${day.d} ｜ ${day.w}</div>
+      <h2 class="display">${day.title}</h2>
+    </div>
+    <div class="flex-banner">⛅ ${day.flexNote}</div>
+    ${day.subDays.map(renderSubDay).join('')}
+    `;
+  }
+
+  return `
+  <div class="day-head">
+    <div class="num">${day.d} ｜ ${day.w}</div>
+    <h2 class="display">${day.title}</h2>
+    ${day.flightBadge ? `<span class="pill flight-badge" style="display:inline-block; margin-top:8px; color:var(--deep);">${day.flightBadge}</span>` : ''}
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🍳</span>早餐</h3>
+    <p>${day.breakfast}</p>
+  </div>
+
+  ${transportCard(day.transport)}
+
+  ${day.timeline ? renderTimeline(day.timeline) : ''}
+
+  <div class="card">
+    <h3><span class="ico">📌</span>景點 / 備註</h3>
+    <ul>${day.sights.map(s=>`<li>${s}</li>`).join('')}</ul>
+  </div>
+
+  ${ticketNoteBlock(day)}
+  `;
+}
+
+function build(){
+  const main = document.getElementById('main');
+  const nav = document.getElementById('daynav');
+  main.innerHTML = DAYS.map((day,i)=>`<section class="day ${i===0?'active':''}" id="${day.key}">${renderDay(day)}</section>`).join('');
+  nav.innerHTML = DAYS.map((day,i)=>`
+    <button data-i="${i}" class="${i===0?'active':''}">
+      <span class="d">${day.d.replace('Day ','D')}</span>
+      <span class="w">${day.w.replace(/[（）]/g,'')}</span>
+    </button>`).join('');
+
+  nav.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i = +btn.dataset.i;
+      document.querySelectorAll('.day').forEach(el=>el.classList.remove('active'));
+      document.getElementById(DAYS[i].key).classList.add('active');
+      nav.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('railDayLabel').textContent = DAYS[i].d;
+      renderRail(DAYS[i].rail);
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  renderRail(DAYS[0].rail);
+}
+build();
+</script>
+</body>
+</html>
