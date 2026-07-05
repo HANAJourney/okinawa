@@ -44,16 +44,16 @@
     opacity:.5;
   }
   header .eyebrow{
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    font-size:13px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--sun); font-weight:700; display:block; margin-bottom:6px;
   }
-  header h1{margin:0 0 6px; font-size:26px; line-height:1.25;}
-  header .sub{font-size:13px; opacity:.85; line-height:1.6;}
+  header h1{margin:0 0 6px; font-size:30px; line-height:1.25;}
+  header .sub{font-size:15px; opacity:.85; line-height:1.6;}
   header .flights{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;}
   .pill{
     background:rgba(255,255,255,.12);
     border:1px solid rgba(255,255,255,.25);
-    padding:6px 12px; border-radius:100px; font-size:12px;
+    padding:6px 12px; border-radius:100px; font-size:14px;
   }
   .pill b{color:var(--sun);}
   .pill.flight-badge{
@@ -67,9 +67,9 @@
     padding:14px 12px 10px;
     box-shadow:0 6px 18px rgba(11,79,108,.08);
   }
-  .rail-title{font-size:11px; color:#7c8f8c; letter-spacing:.06em; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
+  .rail-title{font-size:12.5px; color:#7c8f8c; letter-spacing:.06em; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
   .rail-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px;}
-  .rail-track{display:flex; align-items:center; position:relative; min-width:760px; padding:14px 6px 22px;}
+  .rail-track{display:flex; align-items:center; position:relative; min-width:820px; padding:14px 6px 30px;}
   .rail-track::before{
     content:""; position:absolute; left:14px; right:14px; top:19px; height:3px; background:var(--line); border-radius:2px;
   }
@@ -79,9 +79,12 @@
     border:2px solid #fff;
   }
   .rail-seg.active .rail-dot{background:var(--coral); width:13px; height:13px;}
-  .rail-seg .name{font-size:10px; color:#93a29e; white-space:nowrap;}
+  .rail-seg .name{font-size:11.5px; color:#93a29e; white-space:nowrap; text-decoration:none; display:block;}
+  .rail-seg .name .zh{display:block; font-weight:500;}
+  .rail-seg .name .jp{display:block; font-size:10px; color:#b9c4c1; margin-top:1px;}
   .rail-seg.active .name{color:var(--coral); font-weight:700;}
-  .rail-seg .code{position:absolute; top:-13px; left:50%; transform:translateX(-50%); font-size:9px; color:#c3cdca;}
+  .rail-seg.active .name .jp{color:var(--coral); opacity:.7; font-weight:500;}
+  .rail-seg .code{position:absolute; top:-13px; left:50%; transform:translateX(-50%); font-size:10.5px; color:#c3cdca;}
 
   nav.daynav{
     position:fixed; left:0; right:0; bottom:0; z-index:50;
@@ -96,8 +99,8 @@
     font-family:inherit; cursor:pointer; color:#9fb0ac;
     display:flex; flex-direction:column; align-items:center; gap:2px;
   }
-  nav.daynav button .d{font-size:14px; font-weight:800;}
-  nav.daynav button .w{font-size:9.5px;}
+  nav.daynav button .d{font-size:16px; font-weight:800;}
+  nav.daynav button .w{font-size:11px;}
   nav.daynav button.active{color:var(--coral);}
   nav.daynav button.active .d{color:var(--coral);}
 
@@ -107,25 +110,25 @@
   @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
 
   .day-head{margin-bottom:14px;}
-  .day-head .num{font-size:12px; color:var(--coral); font-weight:700; letter-spacing:.08em;}
-  .day-head h2{margin:2px 0 4px; font-size:21px;}
-  .day-head .meta{font-size:12.5px; color:#5c706c;}
+  .day-head .num{font-size:13.5px; color:var(--coral); font-weight:700; letter-spacing:.08em;}
+  .day-head h2{margin:2px 0 4px; font-size:24px;}
+  .day-head .meta{font-size:14px; color:#5c706c;}
 
   .flex-banner{
     background:linear-gradient(120deg,#FFF3E6,#FFF9EE);
     border:1px solid #FFDDB0; color:#8A5A22;
-    border-radius:14px; padding:10px 13px; font-size:12.5px; line-height:1.7; margin-bottom:14px;
+    border-radius:14px; padding:10px 13px; font-size:14.5px; line-height:1.7; margin-bottom:14px;
   }
 
   .sub-day{margin-bottom:22px; padding-bottom:4px; border-bottom:1px dashed var(--line);}
   .sub-day:last-child{border-bottom:none;}
   .sub-day-head{display:flex; align-items:baseline; gap:8px; margin-bottom:10px;}
   .sub-day-head .tag{
-    background:var(--deep); color:#fff; font-size:11px; font-weight:700;
+    background:var(--deep); color:#fff; font-size:12.5px; font-weight:700;
     padding:3px 9px; border-radius:100px;
   }
-  .sub-day-head .ttl{font-size:15.5px; font-weight:700;}
-  .sub-day-head .wk{font-size:12px; color:#7c8f8c;}
+  .sub-day-head .ttl{font-size:18px; font-weight:700;}
+  .sub-day-head .wk{font-size:14px; color:#7c8f8c;}
 
   .card{
     background:#fff; border-radius:16px; padding:14px 15px; margin-bottom:12px;
@@ -133,37 +136,37 @@
     border:1px solid #eef3f1;
   }
   .card h3{
-    margin:0 0 10px; font-size:13px; display:flex; align-items:center; gap:7px;
+    margin:0 0 10px; font-size:15px; display:flex; align-items:center; gap:7px;
     color:var(--deep); letter-spacing:.02em;
   }
   .card h3 .ico{
     width:22px; height:22px; border-radius:7px; display:flex; align-items:center; justify-content:center;
-    background:var(--foam); font-size:13px; flex:none;
+    background:var(--foam); font-size:15px; flex:none;
   }
   .card h3 .tag-transfer{
     margin-left:auto; background:var(--foam); color:var(--good); font-size:10.5px; font-weight:700;
     padding:2px 9px; border-radius:100px; letter-spacing:.03em;
   }
-  .card p{margin:0; font-size:13.5px; line-height:1.75; color:#33463f;}
-  .card ul{margin:0; padding-left:18px; font-size:13.5px; line-height:1.8; color:#33463f;}
+  .card p{margin:0; font-size:15.5px; line-height:1.8; color:#33463f;}
+  .card ul{margin:0; padding-left:20px; font-size:15.5px; line-height:1.85; color:#33463f;}
   .card li{margin-bottom:2px;}
   .note{
     background:#FFF7ED; border:1px solid #FFE3C4; color:#8A5A22;
-    border-radius:12px; padding:10px 12px; font-size:12.5px; line-height:1.7; margin-top:6px;
+    border-radius:12px; padding:10px 12px; font-size:14.5px; line-height:1.75; margin-top:6px;
   }
   .ticket{
-    background:var(--foam); border-radius:12px; padding:10px 12px; font-size:12.5px; line-height:1.7; color:#245049;
+    background:var(--foam); border-radius:12px; padding:10px 12px; font-size:14.5px; line-height:1.75; color:#245049;
   }
   .ticket a{color:var(--deep); font-weight:700;}
 
   a.mapchip{
     display:inline-flex; align-items:center; gap:5px;
     background:var(--foam); color:var(--deep); text-decoration:none;
-    border-radius:100px; padding:3px 10px 3px 8px; font-size:12.5px; font-weight:500;
+    border-radius:100px; padding:4px 11px 4px 9px; font-size:14px; font-weight:500;
     border:1px solid #DCEAE6; margin:2px 4px 2px 0;
   }
   a.mapchip:active{background:var(--coral); color:#fff; border-color:var(--coral);}
-  a.mapchip .pin{font-size:12px;}
+  a.mapchip .pin{font-size:13.5px;}
 
   /* Timeline (Day2 / Day3 詳細行程) */
   .timeline{list-style:none; margin:0; padding:0;}
@@ -172,9 +175,9 @@
   }
   .timeline li:last-child{border-bottom:none;}
   .timeline .time{
-    flex:0 0 52px; font-size:12px; font-weight:800; color:var(--deep); padding-top:1px;
+    flex:0 0 58px; font-size:13.5px; font-weight:800; color:var(--deep); padding-top:1px;
   }
-  .timeline .body{flex:1; font-size:13.5px; line-height:1.7; color:#33463f;}
+  .timeline .body{flex:1; font-size:15px; line-height:1.75; color:#33463f;}
   .timeline .body .ttl{font-weight:700; color:var(--ink); display:block; margin-bottom:2px;}
   .timeline li.transfer .body{color:#7c8f8c; font-style:normal;}
   .timeline li.transfer .time{color:#9fb0ac;}
@@ -198,6 +201,7 @@
     <span class="pill flight-badge">去程 <b>JX870</b> 7/12 PM2:40</span>
     <span class="pill flight-badge">回程 <b>JX871</b> 7/20 PM3:50</span>
     <span class="pill">住宿 <b>旭橋站｜那霸東急REI</b></span>
+    <span class="pill">早餐 <b>Day1-4 自備</b>・<b>Day5-9 飯店</b></span>
   </div>
 </header>
 
@@ -221,11 +225,25 @@ const mapChip = (label, query) => `<a class="mapchip" target="_blank" rel="noope
 const transferChip = `<span class="transfer-chip">🔄 轉移</span>`;
 
 const RAIL = [
-  {c:'01', n:'那覇機場'}, {c:'02', n:'赤嶺'}, {c:'03', n:'小祿'}, {c:'04', n:'奧武山公園'},
-  {c:'05', n:'壺川'}, {c:'06', n:'旭橋'}, {c:'07', n:'縣政府前'}, {c:'08', n:'美榮橋'},
-  {c:'09', n:'牧志'}, {c:'10', n:'安里'}, {c:'11', n:'Omoromachi'}, {c:'12', n:'古島'},
-  {c:'13', n:'市立醫院前'}, {c:'14', n:'儀保'}, {c:'15', n:'首里'}, {c:'16', n:'石岭'},
-  {c:'17', n:'經塚'}, {c:'18', n:'浦添前田'}, {c:'19', n:'Tedako浦西'}
+  {c:'01', n:'那覇機場', jp:'那覇空港駅', url:'https://www.yui-rail.co.jp/routemap/nahakuko/'},
+  {c:'02', n:'赤嶺',     jp:'赤嶺駅',     url:'https://www.yui-rail.co.jp/routemap/akamine/'},
+  {c:'03', n:'小祿',     jp:'小禄駅',     url:'https://www.yui-rail.co.jp/routemap/oroku/'},
+  {c:'04', n:'奧武山公園', jp:'奥武山公園駅', url:'https://www.yui-rail.co.jp/routemap/onoyama/'},
+  {c:'05', n:'壺川',     jp:'壺川駅',     url:'https://www.yui-rail.co.jp/routemap/tsubogawa/'},
+  {c:'06', n:'旭橋',     jp:'旭橋駅',     url:'https://www.yui-rail.co.jp/routemap/asahibashi/'},
+  {c:'07', n:'縣政府前', jp:'県庁前駅',   url:'https://www.yui-rail.co.jp/routemap/kenchomae/'},
+  {c:'08', n:'美榮橋',   jp:'美栄橋駅',   url:'https://www.yui-rail.co.jp/routemap/miebashi/'},
+  {c:'09', n:'牧志',     jp:'牧志駅',     url:'https://www.yui-rail.co.jp/routemap/makishi/'},
+  {c:'10', n:'安里',     jp:'安里駅',     url:'https://www.yui-rail.co.jp/routemap/asato/'},
+  {c:'11', n:'Omoromachi', jp:'おもろまち駅', url:'https://www.yui-rail.co.jp/routemap/omoromachi/'},
+  {c:'12', n:'古島',     jp:'古島駅',     url:'https://www.yui-rail.co.jp/routemap/furujima/'},
+  {c:'13', n:'市立醫院前', jp:'市立病院前駅', url:'https://www.yui-rail.co.jp/routemap/shiritsubyouin/'},
+  {c:'14', n:'儀保',     jp:'儀保駅',     url:'https://www.yui-rail.co.jp/routemap/gibo/'},
+  {c:'15', n:'首里',     jp:'首里駅',     url:'https://www.yui-rail.co.jp/routemap/syuri/'},
+  {c:'16', n:'石岭',     jp:'石嶺駅',     url:'https://www.yui-rail.co.jp/routemap/ishimine/'},
+  {c:'17', n:'經塚',     jp:'経塚駅',     url:'https://www.yui-rail.co.jp/routemap/kyoduka/'},
+  {c:'18', n:'浦添前田', jp:'浦添前田駅', url:'https://www.yui-rail.co.jp/routemap/urasoemaeda/'},
+  {c:'19', n:'Tedako浦西', jp:'てだこ浦西駅', url:'https://www.yui-rail.co.jp/routemap/tedakouranishi/'},
 ];
 
 // ---- Day2 詳細時刻表 ----
@@ -257,7 +275,7 @@ const DAYS = [
     transport:`${transferChip} 沖繩南部一日團（Klook／易遊網）08:30 於「縣廳前觀光巴士乘降站」集合，位於 Palette Kumoji 百貨前方。${mapChip('縣廳前觀光巴士乘降站','沖縄県庁前観光バス乗降場')} 搭單軌：旭橋站 → 縣廳前站（1站，約2分鐘），或沿國道58號／單軌下方步行約8-10分鐘。`,
     timeline:D2_TIMELINE,
     sights:['回程後：逛 Palette Kumoji 百貨或直接進入國際通吃晚餐'],
-    ticket:`成人 × 1、兒童 × 1<br>訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-143435" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-143435</a>`,
+    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-143435" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-143435</a><br>易遊網 ORD0031039977，出示聯名 KLOOK 憑證：<br>憑證一：<a href="https://klook.klktech.com/voucher-new/8ac84b57-faf5-48ab-772e-a1bc1f45f9f0?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a><br>憑證二：<a href="https://klook.klktech.com/voucher-new/8ac84b57-faf5-48ab-772e-a1bc1f45f9f0?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a>`,
     note:''
   },
   {
@@ -271,7 +289,7 @@ const DAYS = [
       `三重城公園（看飛機起降＋夕陽） ${mapChip('三重城公園','三重城公園')}`,
       `晚餐：牧志公設市場 ${mapChip('牧志公設市場','第一牧志公設市場')} 或國際通周邊（步行或單軌一站到縣廳前／美榮橋）`
     ],
-    ticket:'—',
+    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-22947" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-22947</a><br>易遊網 ORD0031043352，出示聯名 KLOOK 憑證：<a href="https://klook.klktech.com/voucher-new/82c73f2b-f31f-4a40-6c99-381ec73ca090?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a>`,
     note:'波上宮周圍就是波之上海灘，適合帶小朋友踩沙、吹海風。'
   },
   {
@@ -361,7 +379,10 @@ function renderRail(activeStations){
     return `<div class="rail-seg ${active?'active':''}">
       <span class="code">${s.c}</span>
       <div class="rail-dot"></div>
-      <div class="name">${s.n}</div>
+      <a class="name" href="${s.url}" target="_blank" rel="noopener">
+        <span class="zh">${s.n}</span>
+        <span class="jp">${s.jp}</span>
+      </a>
     </div>`;
   }).join('');
 }
@@ -370,7 +391,7 @@ function transportCard(html){
   const clean = html.replace(transferChip,'').trim();
   return `
   <div class="card">
-    <h3><span class="ico">🚃</span>交通<span class="tag-transfer">轉移</span></h3>
+    <h3><span class="ico">🚃</span>交通</h3>
     <p>${clean}</p>
   </div>`;
 }
@@ -404,10 +425,6 @@ function renderSubDay(sub){
       <span class="tag">${sub.tag}</span>
       <span class="ttl">${sub.ttl}</span>
     </div>
-    <div class="card">
-      <h3><span class="ico">🍳</span>早餐</h3>
-      <p>${sub.breakfast}</p>
-    </div>
     ${transportCard(sub.transport)}
     <div class="card">
       <h3><span class="ico">📌</span>景點 / 備註</h3>
@@ -434,11 +451,6 @@ function renderDay(day){
     <div class="num">${day.d} ｜ ${day.w}</div>
     <h2 class="display">${day.title}</h2>
     ${day.flightBadge ? `<span class="pill flight-badge" style="display:inline-block; margin-top:8px; color:var(--deep);">${day.flightBadge}</span>` : ''}
-  </div>
-
-  <div class="card">
-    <h3><span class="ico">🍳</span>早餐</h3>
-    <p>${day.breakfast}</p>
   </div>
 
   ${transportCard(day.transport)}
