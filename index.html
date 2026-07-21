@@ -3,252 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>沖繩親子九日行 2026.07.12–20</title>
+<title>沖繩親子九日行 ｜ 行程與記帳 2026.07.12–20</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --deep: #0B4F6C;
-    --deep2:#083B52;
-    --coral:#FF6B4A;
-    --sun:#FFB627;
-    --sand:#F5F1E6;
-    --foam:#EAF4F1;
-    --ink:#123A40;
-    --line:#D8E6E2;
-    --good:#2E9E6B;
+    --paper:      #F2E9D8;
+    --paper-card: #FFFCF4;
+    --paper-soft: #EAE0C7;
+    --ink:        #232A28;
+    --ink-dim:    #6B6656;
+    --deep:       #0E4F5C;
+    --deep2:      #0A3A45;
+    --coral:      #D95A34;
+    --coral-deep: #A83F22;
+    --sun:        #E8A23B;
+    --line:       #DCCFA6;
+    --good:       #2E8F6B;
+    --shadow: 0 10px 26px -14px rgba(14,79,92,0.28);
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--sand);
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(35,42,40,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
     color:var(--ink);
-    font-family:'Noto Sans TC', sans-serif;
-    padding-bottom:84px;
-    -webkit-tap-highlight-color: transparent;
+    font-family:'Zen Kaku Gothic New','Noto Sans TC',sans-serif;
+    padding-bottom:40px;
   }
-  .display{font-family:'Zen Maru Gothic','Archivo', sans-serif;}
+  .serif{font-family:'Noto Serif TC',serif;}
+  .mono{font-family:'Space Mono',monospace;}
+  a{color:inherit;}
+  ::selection{background:var(--sun); color:var(--deep2);}
 
-  header{
-    background:linear-gradient(160deg, var(--deep) 0%, var(--deep2) 100%);
-    color:#fff;
-    padding:22px 18px 26px;
+  /* ---------------- Header ---------------- */
+  header.hero{
+    background:linear-gradient(165deg, var(--deep) 0%, var(--deep2) 100%);
+    color:#FBF7EC;
+    padding:38px 20px 30px;
     position:relative;
     overflow:hidden;
   }
-  header::after{
+  header.hero::before{
     content:"";
-    position:absolute; left:0; right:0; bottom:-2px; height:26px;
-    background:
-      radial-gradient(circle at 10px 0, transparent 12px, var(--deep2) 13px) 0 -13px/40px 26px repeat-x;
-    opacity:.5;
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle at 92% 8%, rgba(232,162,59,0.16), transparent 45%),
+                       radial-gradient(circle at 6% 90%, rgba(217,90,52,0.14), transparent 40%);
+    pointer-events:none;
   }
-  header .eyebrow{
-    font-size:13px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--sun); font-weight:700; display:block; margin-bottom:6px;
+  header.hero::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:-1px; height:22px;
+    background: radial-gradient(circle at 11px 0, transparent 11px, var(--paper) 12px) 0 -11px/22px 22px repeat-x;
   }
-  header h1{margin:0 0 6px; font-size:30px; line-height:1.25;}
-  header .sub{font-size:15px; opacity:.85; line-height:1.6;}
-  header .flights{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;}
-  .pill{
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);
-    padding:6px 12px; border-radius:100px; font-size:14px;
+  .hero-inner{ max-width:920px; margin:0 auto; position:relative; }
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.24em;
+    text-transform:uppercase; color:var(--sun); font-weight:700;
   }
-  .pill b{color:var(--sun);}
-  .pill.flight-badge{
-    background:rgba(255,107,74,.16); border-color:rgba(255,107,74,.4);
+  h1.trip-title{ margin:8px 0 6px; font-size:clamp(26px,5vw,38px); font-weight:900; letter-spacing:.03em;}
+  .trip-sub{ font-size:14px; color:#CFE4DD; line-height:1.7;}
+  .flight-row{ margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;}
+  .stub{
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22);
+    padding:6px 13px; border-radius:100px; font-size:12.5px; color:#E7F1EC;
+  }
+  .stub b{color:var(--sun); font-family:'Space Mono',monospace;}
+  .stub.hl{ background:rgba(217,90,52,.22); border-color:rgba(217,90,52,.5);}
+
+  .total-strip{
+    margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .total-card{
+    flex:1 1 210px;
+    background:rgba(251,247,236,0.06);
+    border:1px solid rgba(251,247,236,0.18);
+    border-radius:14px; padding:13px 16px;
+    backdrop-filter: blur(2px);
+  }
+  .total-card .l{ font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.14em; color:#B9D3CB; text-transform:uppercase;}
+  .total-card .v{ font-family:'Noto Serif TC',serif; font-weight:700; font-size:24px; margin-top:3px; color:#FBF7EC;}
+  .total-card .v small{ font-size:13px; opacity:.7; font-weight:500;}
+  .total-card .v2{ font-family:'Space Mono',monospace; font-size:12px; color:#A9CBC1; margin-top:2px;}
+
+  /* ---------------- Tabs ---------------- */
+  .tabbar-wrap{ position:sticky; top:0; z-index:60; background:var(--paper); padding:14px 20px 0; box-shadow:0 2px 0 var(--line);}
+  .tabbar{
+    max-width:920px; margin:0 auto; display:flex; gap:0;
+    background:var(--paper-card); border:1px solid var(--line); border-radius:16px 16px 0 0;
+    overflow:hidden; box-shadow:var(--shadow);
+  }
+  .tabbtn{
+    flex:1; border:none; background:none; cursor:pointer;
+    font-family:'Noto Serif TC',serif; font-weight:700; font-size:16px;
+    padding:15px 10px 13px; color:var(--ink-dim);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    position:relative; letter-spacing:.03em;
+    border-bottom:3px solid transparent;
+  }
+  .tabbtn .ic{font-size:17px;}
+  .tabbtn.active{ color:var(--coral-deep); border-bottom-color:var(--coral);}
+  .tabbtn:not(.active):hover{ color:var(--deep); background:var(--paper-soft);}
+  .tabbtn .stamp{
+    font-family:'Space Mono',monospace; font-size:9.5px; letter-spacing:.1em;
+    color:var(--ink-dim); border:1px dashed var(--line); border-radius:6px;
+    padding:1px 5px; margin-left:2px;
   }
 
-  .rail-wrap{
-    margin:14px 18px 0;
-    background:#fff;
-    border-radius:16px;
-    padding:14px 12px 10px;
-    box-shadow:0 6px 18px rgba(11,79,108,.08);
-  }
-  .rail-title{font-size:12.5px; color:#7c8f8c; letter-spacing:.06em; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;}
-  .rail-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px;}
-  .rail-track{display:flex; align-items:center; position:relative; min-width:820px; padding:14px 6px 30px;}
-  .rail-track::before{
-    content:""; position:absolute; left:14px; right:14px; top:19px; height:3px; background:var(--line); border-radius:2px;
-  }
-  .rail-seg{flex:1; position:relative; text-align:center;}
-  .rail-dot{
-    width:10px; height:10px; border-radius:50%; background:#cfd9d6; margin:0 auto 6px; position:relative; z-index:2;
-    border:2px solid #fff;
-  }
-  .rail-seg.active .rail-dot{background:var(--coral); width:13px; height:13px;}
-  .rail-seg .name{font-size:11.5px; color:#93a29e; white-space:nowrap; text-decoration:none; display:block;}
-  .rail-seg .name .zh{display:block; font-weight:500;}
-  .rail-seg .name .jp{display:block; font-size:10px; color:#b9c4c1; margin-top:1px;}
-  .rail-seg.active .name{color:var(--coral); font-weight:700;}
-  .rail-seg.active .name .jp{color:var(--coral); opacity:.7; font-weight:500;}
-  .rail-seg .code{position:absolute; top:-13px; left:50%; transform:translateX(-50%); font-size:10.5px; color:#c3cdca;}
+  main{ max-width:920px; margin:0 auto; padding:22px 20px 0; }
+  .panel{ display:none; }
+  .panel.active{ display:block; animation:fadein .28s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
 
-  nav.daynav{
-    position:fixed; left:0; right:0; bottom:0; z-index:50;
-    background:#fff;
-    border-top:1px solid var(--line);
-    display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch;
-    box-shadow:0 -6px 18px rgba(11,79,108,.10);
+  /* ---------------- Section shared ---------------- */
+  .section-title{
+    font-family:'Noto Serif TC',serif; font-weight:700; font-size:19px; margin:0 0 12px;
+    display:flex; align-items:center; gap:8px; color:var(--ink);
   }
-  nav.daynav button{
-    flex:0 0 auto; min-width:56px;
-    border:none; background:none; padding:9px 6px 8px;
-    font-family:inherit; cursor:pointer; color:#9fb0ac;
-    display:flex; flex-direction:column; align-items:center; gap:2px;
+  .toolbar{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
+  .toolbtn{
+    font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.04em;
+    background:var(--paper-card); border:1px solid var(--line); color:var(--deep);
+    padding:7px 13px; border-radius:100px; cursor:pointer; font-weight:700;
   }
-  nav.daynav button .d{font-size:16px; font-weight:800;}
-  nav.daynav button .w{font-size:11px;}
-  nav.daynav button.active{color:var(--coral);}
-  nav.daynav button.active .d{color:var(--coral);}
+  .toolbtn:hover{ background:var(--deep); color:#fff; border-color:var(--deep);}
 
-  main{padding:16px 18px 10px;}
-  .day{display:none;}
-  .day.active{display:block; animation:fade .25s ease;}
-  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+  /* ---------------- Itinerary accordion ---------------- */
+  .day-card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:16px;
+    margin-bottom:12px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .day-card summary, .day-card .day-summary{
+    list-style:none; cursor:pointer; padding:14px 16px;
+    display:flex; align-items:center; gap:12px; user-select:none;
+  }
+  .day-card summary::-webkit-details-marker{ display:none; }
+  .day-badge{
+    font-family:'Space Mono',monospace; font-weight:700; font-size:12px;
+    background:var(--deep); color:#EAF4F0; border-radius:9px;
+    padding:6px 9px; text-align:center; min-width:52px; line-height:1.25;
+  }
+  .day-badge .dd{ display:block; font-size:15px;}
+  .day-head-text{ flex:1; min-width:0; }
+  .day-head-text .ttl{ font-family:'Noto Serif TC',serif; font-weight:700; font-size:16.5px; }
+  .day-head-text .sub{ font-size:12.5px; color:var(--ink-dim); margin-top:2px; }
+  .flex-badge{
+    font-family:'Space Mono',monospace; font-size:10px; background:#FBEFDD; color:#8A5A22;
+    border:1px solid #EFD8A8; border-radius:100px; padding:2px 9px; white-space:nowrap;
+  }
+  .chevron{
+    width:22px; height:22px; flex:none; color:var(--coral-deep);
+    transition:transform .25s ease;
+  }
+  .day-card[open] .chevron, .day-card.open .chevron{ transform:rotate(180deg); }
 
-  .day-head{margin-bottom:14px;}
-  .day-head .num{font-size:13.5px; color:var(--coral); font-weight:700; letter-spacing:.08em;}
-  .day-head h2{margin:2px 0 4px; font-size:24px;}
-  .day-head .meta{font-size:14px; color:#5c706c;}
+  .day-body{ padding:0 16px 18px; }
+  .flight-badge-inline{
+    display:inline-block; background:var(--paper-soft); color:var(--deep2);
+    font-family:'Space Mono',monospace; font-size:11.5px; padding:5px 11px;
+    border-radius:100px; margin-bottom:12px; font-weight:700;
+  }
+  .route-mini{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Space Mono',monospace; font-size:11px; color:var(--ink-dim);
+    margin-bottom:12px;
+  }
+  .route-mini .st{
+    background:var(--paper-soft); border:1px solid var(--line); border-radius:100px;
+    padding:3px 10px; color:var(--deep2); font-weight:700;
+  }
+  .route-mini .arrow{ color:var(--coral); }
 
-  .flex-banner{
-    background:linear-gradient(120deg,#FFF3E6,#FFF9EE);
-    border:1px solid #FFDDB0; color:#8A5A22;
-    border-radius:14px; padding:10px 13px; font-size:14.5px; line-height:1.7; margin-bottom:14px;
+  .icard{
+    background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; margin-bottom:10px;
   }
-
-  .sub-day{margin-bottom:22px; padding-bottom:4px; border-bottom:1px dashed var(--line);}
-  .sub-day:last-child{border-bottom:none;}
-  .sub-day-head{display:flex; align-items:baseline; gap:8px; margin-bottom:10px;}
-  .sub-day-head .tag{
-    background:var(--deep); color:#fff; font-size:12.5px; font-weight:700;
-    padding:3px 9px; border-radius:100px;
+  .icard h4{
+    margin:0 0 8px; font-size:13.5px; display:flex; align-items:center; gap:6px;
+    color:var(--deep2); letter-spacing:.02em;
   }
-  .sub-day-head .ttl{font-size:18px; font-weight:700;}
-  .sub-day-head .wk{font-size:14px; color:#7c8f8c;}
-
-  .card{
-    background:#fff; border-radius:16px; padding:14px 15px; margin-bottom:12px;
-    box-shadow:0 4px 14px rgba(11,79,108,.06);
-    border:1px solid #eef3f1;
+  .icard h4 .ico{
+    width:20px; height:20px; border-radius:6px; background:var(--paper-soft);
+    display:flex; align-items:center; justify-content:center; font-size:13px; flex:none;
   }
-  .card h3{
-    margin:0 0 10px; font-size:15px; display:flex; align-items:center; gap:7px;
-    color:var(--deep); letter-spacing:.02em;
+  .icard p, .icard ul{ margin:0; font-size:14.5px; line-height:1.75; color:#33403A; }
+  .icard ul{ padding-left:19px; }
+  .icard li{ margin-bottom:2px; }
+  .icard .note-box{
+    background:#FBF1E2; border:1px solid #EFD8A8; color:#8A5A22;
+    border-radius:10px; padding:9px 11px; font-size:13.5px; line-height:1.7; margin-top:6px;
   }
-  .card h3 .ico{
-    width:22px; height:22px; border-radius:7px; display:flex; align-items:center; justify-content:center;
-    background:var(--foam); font-size:15px; flex:none;
+  .icard .ticket-box{
+    background:#EAF4F0; border-radius:10px; padding:9px 11px; font-size:13.5px; line-height:1.7; color:#1B4A42;
   }
-  .card h3 .tag-transfer{
-    margin-left:auto; background:var(--foam); color:var(--good); font-size:10.5px; font-weight:700;
-    padding:2px 9px; border-radius:100px; letter-spacing:.03em;
-  }
-  .card p{margin:0; font-size:15.5px; line-height:1.8; color:#33463f;}
-  .card ul{margin:0; padding-left:20px; font-size:15.5px; line-height:1.85; color:#33463f;}
-  .card li{margin-bottom:2px;}
-  .note{
-    background:#FFF7ED; border:1px solid #FFE3C4; color:#8A5A22;
-    border-radius:12px; padding:10px 12px; font-size:14.5px; line-height:1.75; margin-top:6px;
-  }
-  .ticket{
-    background:var(--foam); border-radius:12px; padding:10px 12px; font-size:14.5px; line-height:1.75; color:#245049;
-  }
-  .ticket a{color:var(--deep); font-weight:700;}
-
+  .icard .ticket-box a{ color:var(--deep); font-weight:700; text-decoration:underline; text-decoration-style:dotted; }
   a.mapchip{
-    display:inline-flex; align-items:center; gap:5px;
-    background:var(--foam); color:var(--deep); text-decoration:none;
-    border-radius:100px; padding:4px 11px 4px 9px; font-size:14px; font-weight:500;
-    border:1px solid #DCEAE6; margin:2px 4px 2px 0;
+    display:inline-flex; align-items:center; gap:4px;
+    background:var(--paper-soft); color:var(--deep2); text-decoration:none;
+    border-radius:100px; padding:3px 10px 3px 8px; font-size:12.5px; font-weight:600;
+    border:1px solid var(--line); margin:2px 4px 2px 0;
   }
-  a.mapchip:active{background:var(--coral); color:#fff; border-color:var(--coral);}
-  a.mapchip .pin{font-size:13.5px;}
+  a.mapchip:hover{ background:var(--coral); color:#fff; border-color:var(--coral);}
 
-  /* Timeline (Day2 / Day3 詳細行程) */
-  .timeline{list-style:none; margin:0; padding:0;}
-  .timeline li{
-    display:flex; gap:10px; padding:9px 0; border-bottom:1px solid #F1F5F3;
-  }
-  .timeline li:last-child{border-bottom:none;}
-  .timeline .time{
-    flex:0 0 58px; font-size:13.5px; font-weight:800; color:var(--deep); padding-top:1px;
-  }
-  .timeline .body{flex:1; font-size:15px; line-height:1.75; color:#33463f;}
-  .timeline .body .ttl{font-weight:700; color:var(--ink); display:block; margin-bottom:2px;}
-  .timeline li.transfer .body{color:#7c8f8c; font-style:normal;}
-  .timeline li.transfer .time{color:#9fb0ac;}
+  .timeline{ list-style:none; margin:0; padding:0; }
+  .timeline li{ display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed var(--line); }
+  .timeline li:last-child{ border-bottom:none; }
+  .timeline .time{ flex:0 0 52px; font-family:'Space Mono',monospace; font-size:12.5px; font-weight:700; color:var(--deep); padding-top:1px;}
+  .timeline .body{ flex:1; font-size:14px; line-height:1.7; color:#33403A; }
+  .timeline .body .ttl{ font-weight:700; color:var(--ink); display:block; margin-bottom:2px; }
+  .timeline li.transfer .body,.timeline li.transfer .time{ color:var(--ink-dim); }
   .transfer-chip{
     display:inline-flex; align-items:center; gap:4px;
-    background:#EFF3F1; color:#5c706c; font-size:11px; font-weight:700;
-    padding:2px 9px; border-radius:100px; margin-right:6px;
+    background:var(--paper-soft); color:#6B6656; font-size:10.5px; font-weight:700;
+    padding:2px 8px; border-radius:100px; margin-right:6px;
   }
 
-  .price{color:var(--coral); font-weight:700;}
-  .divider{height:1px; background:var(--line); margin:10px 0;}
+  /* ---------------- Ledger: filter bar ---------------- */
+  .ledger-summary{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:18px;
+  }
+  .lstat{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:12px;
+    padding:11px 8px; text-align:center;
+  }
+  .lstat .n{ font-family:'Space Mono',monospace; font-weight:700; font-size:16px; color:var(--coral-deep); }
+  .lstat .n small{ display:block; font-size:9.5px; color:var(--ink-dim); font-weight:400; margin-top:2px;}
+  .lstat .l{ font-size:10.5px; color:var(--ink-dim); margin-top:3px; }
+
+  .filter-bar{
+    position:sticky; top:57px; z-index:50;
+    background:var(--paper); padding:10px 0 14px;
+  }
+  .search-row{
+    display:flex; gap:8px; margin-bottom:10px;
+  }
+  .search-box{
+    flex:1; position:relative;
+  }
+  .search-box input{
+    width:100%; padding:11px 14px 11px 36px; border-radius:100px;
+    border:1px solid var(--line); background:var(--paper-card);
+    font-family:'Zen Kaku Gothic New',sans-serif; font-size:14px; color:var(--ink);
+    outline:none;
+  }
+  .search-box input:focus{ border-color:var(--coral); box-shadow:0 0 0 3px rgba(217,90,52,.12);}
+  .search-box .sic{ position:absolute; left:13px; top:50%; transform:translateY(-50%); opacity:.5; font-size:14px;}
+  .search-box .clr{
+    position:absolute; right:8px; top:50%; transform:translateY(-50%);
+    border:none; background:var(--line); color:var(--ink); width:20px; height:20px; border-radius:50%;
+    cursor:pointer; font-size:12px; line-height:1; display:none;
+  }
+  .chip-row{ display:flex; gap:7px; flex-wrap:wrap; }
+  .chip{
+    font-family:'Space Mono',monospace; font-size:12px; font-weight:700;
+    padding:6px 13px; border-radius:100px; cursor:pointer;
+    background:var(--paper-card); border:1px solid var(--line); color:var(--ink-dim);
+    display:flex; align-items:center; gap:6px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .chip .dot{ width:8px; height:8px; border-radius:50%; }
+  .chip.active{ background:var(--deep); color:#fff; border-color:var(--deep); }
+  .chip.active .dot{ box-shadow:0 0 0 2px rgba(255,255,255,.5); }
+  .chip[data-cat="all"].active{ background:var(--coral-deep); border-color:var(--coral-deep); }
+  .filter-total{
+    margin-top:10px; font-family:'Space Mono',monospace; font-size:12.5px; color:var(--ink-dim);
+  }
+  .filter-total b{ color:var(--coral-deep); font-size:14px; }
+
+  /* ---------------- Ledger day ---------------- */
+  .lday{ margin-top:26px; }
+  .lday-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-bottom:2px solid var(--deep); padding-bottom:9px; margin-bottom:12px;
+  }
+  .lday-head .d{ font-family:'Noto Serif TC',serif; font-weight:700; font-size:19px; display:flex; align-items:baseline; gap:9px;}
+  .lday-head .dow{ font-family:'Space Mono',monospace; font-size:12px; color:var(--coral-deep); font-weight:700; letter-spacing:.08em;}
+  .lday-head .t{ font-family:'Space Mono',monospace; font-size:14px; color:var(--ink-dim); }
+  .lday-head .t b{ color:var(--deep2); font-size:16px; }
+  .lday-note{ font-size:12px; color:var(--deep); font-weight:700; margin:-4px 0 10px; }
+
+  .litems{ display:flex; flex-direction:column; gap:7px; }
+  .litem{
+    display:grid; grid-template-columns:58px 1fr auto; align-items:center; gap:12px;
+    background:var(--paper-card); border:1px solid var(--line); border-radius:10px;
+    padding:9px 13px;
+  }
+  .litem:nth-child(even){ background:#F3EDDD; }
+  .litem .time{ font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--deep); }
+  .litem .shop{ font-weight:700; font-size:14px; color:var(--ink); }
+  .litem .desc{ font-size:12px; color:var(--ink-dim); margin-top:1px; }
+  .litem .catlabel{
+    display:inline-block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.04em;
+    padding:1px 7px; border-radius:100px; margin-left:6px; vertical-align:middle; font-weight:700;
+  }
+  .litem .amt{ font-family:'Space Mono',monospace; font-weight:700; font-size:15px; color:var(--coral-deep); white-space:nowrap; text-align:right; }
+  .litem .amt::before{ content:"¥"; font-size:11px; opacity:.8; margin-right:1px; }
+  .litem .amt.refund{ color:var(--good); }
+  .litem .amt.refund::before{ content:"－¥"; }
+  .litem .twd{ font-family:'Space Mono',monospace; font-size:10px; color:var(--ink-dim); text-align:right; margin-top:1px;}
+  .tag{
+    display:inline-block; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.03em;
+    padding:1px 6px; border-radius:100px; margin-left:6px; vertical-align:middle;
+    background:#F2DDD0; color:var(--coral-deep); border:1px solid #E3B79E; font-weight:700;
+  }
+
+  .empty-state{
+    text-align:center; padding:50px 20px; color:var(--ink-dim);
+  }
+  .empty-state .em{ font-size:34px; margin-bottom:10px; }
+  .empty-state p{ font-size:14px; margin:0; }
+
+  /* ---------------- breakdown / pretrip (reference, collapsible) ---------------- */
+  details.ref-block{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:16px;
+    padding:4px 18px 18px; margin-top:26px;
+  }
+  details.ref-block summary{
+    cursor:pointer; padding:14px 0; font-family:'Noto Serif TC',serif; font-weight:700; font-size:16px;
+    list-style:none; display:flex; align-items:center; justify-content:space-between;
+  }
+  details.ref-block summary::-webkit-details-marker{ display:none; }
+  details.ref-block summary::after{ content:"▾"; color:var(--coral-deep); transition:transform .2s;}
+  details.ref-block[open] summary::after{ transform:rotate(180deg); }
+
+  table.pretrip-table{ width:100%; border-collapse:collapse; font-size:12.5px; margin-top:4px; }
+  .pretrip-table th{
+    text-align:left; font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em;
+    color:var(--deep2); border-bottom:2px solid var(--deep); padding:6px 7px;
+  }
+  .pretrip-table td{ padding:7px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .pretrip-table td.num{ font-family:'Space Mono',monospace; font-weight:700; text-align:right; white-space:nowrap; color:var(--coral-deep); }
+  .pretrip-table tfoot td{ font-weight:700; border-top:2px solid var(--deep); border-bottom:none; color:var(--deep2); }
+
+  .bar-row{ display:grid; grid-template-columns:96px 1fr 78px; align-items:center; gap:10px; margin-bottom:10px; font-size:12.5px;}
+  .bar-row .cat{ color:var(--ink-dim); font-weight:500; }
+  .bar-track{ height:8px; border-radius:5px; background:var(--line); overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:5px; background:linear-gradient(90deg,var(--coral-deep),var(--deep)); }
+  .bar-row .val{ text-align:right; font-family:'Space Mono',monospace; font-weight:700; }
+  .bar-row .val small{ display:block; font-weight:400; color:var(--ink-dim); font-size:10px;}
+
+  footer.pagefoot{
+    text-align:center; margin-top:44px; font-family:'Space Mono',monospace;
+    font-size:11px; color:var(--ink-dim); letter-spacing:.08em;
+  }
+
+  @media (max-width:560px){
+    .ledger-summary{ grid-template-columns:repeat(2,1fr); }
+    .litem{ grid-template-columns:46px 1fr auto; padding:8px 10px; }
+    .total-strip{ flex-direction:column; }
+    .filter-bar{ top:53px; }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <span class="eyebrow display">Okinawa · 2026.07.12 – 07.20</span>
-  <h1 class="display">沖繩親子九日行</h1>
-  <div class="sub">大人 + 小孩・那霸東急REI飯店（旭橋站）為主要落腳點</div>
-  <div class="flights">
-    <span class="pill flight-badge">去程 <b>JX870</b> 7/12 PM2:40</span>
-    <span class="pill flight-badge">回程 <b>JX871</b> 7/20 PM3:50</span>
-    <span class="pill">住宿 <b>旭橋站｜那霸東急REI</b></span>
-    <span class="pill">早餐 <b>Day1-4 自備</b>・<b>Day5-9 飯店</b></span>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow mono">Okinawa Family Trip · 2026.07.12 – 07.20</span>
+    <h1 class="trip-title serif">沖繩親子九日行</h1>
+    <div class="trip-sub">大人＋小孩・那霸東急REI飯店（旭橋駅）為主要落腳點</div>
+    <div class="flight-row">
+      <span class="stub hl">去程 <b>JX870</b> 7/12 14:40</span>
+      <span class="stub hl">回程 <b>JX871</b> 7/20 15:50</span>
+      <span class="stub">住宿 <b>那覇東急REI・旭橋駅</b></span>
+      <span class="stub">早餐 <b>Day1–4 自理</b>・<b>Day5–9 飯店含</b></span>
+    </div>
+    <div class="total-strip">
+      <div class="total-card">
+        <div class="l mono">GRAND TOTAL 行前＋當地</div>
+        <div class="v serif">NT$ 107,900</div>
+      </div>
+      <div class="total-card">
+        <div class="l mono">行前費用 PRE-TRIP</div>
+        <div class="v serif">NT$ 48,618</div>
+      </div>
+      <div class="total-card">
+        <div class="l mono">沖繩當地花費 LOCAL</div>
+        <div class="v serif">¥269,462 <small>≈NT$59,282</small></div>
+        <div class="v2 mono">匯率 ¥1 ＝ NT$0.22</div>
+      </div>
+    </div>
   </div>
 </header>
 
-<div class="rail-wrap">
-  <div class="rail-title">
-    <span>ゆいレール Yui-Rail 單軌路線・當日相關站點</span>
-    <span id="railDayLabel" style="color:var(--coral); font-weight:700;">Day 1</span>
-  </div>
-  <div class="rail-scroll">
-    <div class="rail-track" id="railTrack"></div>
+<div class="tabbar-wrap">
+  <div class="tabbar">
+    <button class="tabbtn active" data-tab="itinerary"><span class="ic">🗺️</span>行程<span class="stamp">ITINERARY</span></button>
+    <button class="tabbtn" data-tab="ledger"><span class="ic">💴</span>記帳與統計<span class="stamp">LEDGER</span></button>
   </div>
 </div>
 
-<main id="main"></main>
+<main>
 
-<nav class="daynav" id="daynav"></nav>
+  <!-- ================= ITINERARY PANEL ================= -->
+  <section class="panel active" id="panel-itinerary">
+    <div class="toolbar">
+      <button class="toolbtn" id="expandAllBtn">▾ 全部展開</button>
+      <button class="toolbtn" id="collapseAllBtn">▸ 全部收合</button>
+    </div>
+    <div id="itineraryList"></div>
+  </section>
+
+  <!-- ================= LEDGER PANEL ================= -->
+  <section class="panel" id="panel-ledger">
+
+    <div class="ledger-summary">
+      <div class="lstat"><div class="n mono">9</div><div class="l">記帳天數</div></div>
+      <div class="lstat"><div class="n mono">107</div><div class="l">消費筆數</div></div>
+      <div class="lstat"><div class="n mono">¥29,940<small>NT$ 6,587</small></div><div class="l">平均日花費</div></div>
+      <div class="lstat"><div class="n mono">¥15,000<small>NT$ 3,300</small></div><div class="l">交通卡儲值（未列入）</div></div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="search-row">
+        <div class="search-box">
+          <span class="sic">🔍</span>
+          <input type="text" id="searchInput" placeholder="搜尋店家、品項…（例：星乃、水族館、蛋白質）">
+          <button class="clr" id="clearSearch">✕</button>
+        </div>
+      </div>
+      <div class="chip-row" id="chipRow"></div>
+      <div class="filter-total mono" id="filterTotal"></div>
+    </div>
+
+    <div id="ledgerList"></div>
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <div class="em">🧭</div>
+      <p>沒有符合篩選條件的消費紀錄，換個關鍵字或分類試試。</p>
+    </div>
+
+    <details class="ref-block">
+      <summary>行前費用 Pre-Trip Costs（新台幣 NT$）</summary>
+      <table class="pretrip-table">
+        <thead><tr><th>項目</th><th>金額</th><th>扣折</th><th>備註</th></tr></thead>
+        <tbody id="pretripBody"></tbody>
+        <tfoot><tr><td>小計</td><td class="num">48,618</td><td class="num">1,675</td><td>金額為已付淨額；扣折欄為優惠／折扣參考金額</td></tr></tfoot>
+      </table>
+    </details>
+
+    <details class="ref-block" open>
+      <summary>分類佔比（依原始記帳分類）</summary>
+      <div id="breakdownBars"></div>
+      <p class="mono" style="font-size:11px; color:var(--ink-dim); text-align:center; margin-top:10px;">＊交通卡儲值 ¥15,000（NT$3,300）為儲值金，未列入總支出與分類統計</p>
+    </details>
+
+  </section>
+
+</main>
+
+<footer class="pagefoot">OKINAWA · JUL 2026 · RECORDED FROM RECEIPTS</footer>
 
 <script>
-const MAP_DIR = q => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
-const mapChip = (label, query) => `<a class="mapchip" target="_blank" rel="noopener" href="${MAP_DIR(query)}"><span class="pin">📍</span>${label}</a>`;
+/* =========================================================================
+   CATEGORY DEFINITIONS (used for ledger filter chips)
+========================================================================= */
+const CATS = [
+  {key:'food',      label:'餐飲',       icon:'🍜', color:'#D95A34'},
+  {key:'shopping',  label:'購物',       icon:'🛍️', color:'#0E4F5C'},
+  {key:'souvenir',  label:'紀念品',     icon:'🎁', color:'#B08A2E'},
+  {key:'fashion',   label:'服飾',       icon:'👕', color:'#7A4FA0'},
+  {key:'health',    label:'運動／保健品', icon:'💪', color:'#2E8F6B'},
+  {key:'sight',     label:'景點／體驗', icon:'🎫', color:'#C13F6B'},
+  {key:'conv',      label:'超商／零食', icon:'🏪', color:'#3F7FB0'},
+  {key:'transport', label:'交通',       icon:'🚌', color:'#8A5A22'},
+];
+const CATMAP = Object.fromEntries(CATS.map(c=>[c.key,c]));
+
+/* =========================================================================
+   ITINERARY DATA
+========================================================================= */
+const mapChip = (label, query) => `<a class="mapchip" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}"><span>📍</span>${label}</a>`;
 const transferChip = `<span class="transfer-chip">🔄 轉移</span>`;
 
-const RAIL = [
-  {c:'01', n:'那覇機場', jp:'那覇空港駅', url:'https://www.yui-rail.co.jp/routemap/nahakuko/'},
-  {c:'02', n:'赤嶺',     jp:'赤嶺駅',     url:'https://www.yui-rail.co.jp/routemap/akamine/'},
-  {c:'03', n:'小祿',     jp:'小禄駅',     url:'https://www.yui-rail.co.jp/routemap/oroku/'},
-  {c:'04', n:'奧武山公園', jp:'奥武山公園駅', url:'https://www.yui-rail.co.jp/routemap/onoyama/'},
-  {c:'05', n:'壺川',     jp:'壺川駅',     url:'https://www.yui-rail.co.jp/routemap/tsubogawa/'},
-  {c:'06', n:'旭橋',     jp:'旭橋駅',     url:'https://www.yui-rail.co.jp/routemap/asahibashi/'},
-  {c:'07', n:'縣政府前', jp:'県庁前駅',   url:'https://www.yui-rail.co.jp/routemap/kenchomae/'},
-  {c:'08', n:'美榮橋',   jp:'美栄橋駅',   url:'https://www.yui-rail.co.jp/routemap/miebashi/'},
-  {c:'09', n:'牧志',     jp:'牧志駅',     url:'https://www.yui-rail.co.jp/routemap/makishi/'},
-  {c:'10', n:'安里',     jp:'安里駅',     url:'https://www.yui-rail.co.jp/routemap/asato/'},
-  {c:'11', n:'Omoromachi', jp:'おもろまち駅', url:'https://www.yui-rail.co.jp/routemap/omoromachi/'},
-  {c:'12', n:'古島',     jp:'古島駅',     url:'https://www.yui-rail.co.jp/routemap/furujima/'},
-  {c:'13', n:'市立醫院前', jp:'市立病院前駅', url:'https://www.yui-rail.co.jp/routemap/shiritsubyouin/'},
-  {c:'14', n:'儀保',     jp:'儀保駅',     url:'https://www.yui-rail.co.jp/routemap/gibo/'},
-  {c:'15', n:'首里',     jp:'首里駅',     url:'https://www.yui-rail.co.jp/routemap/syuri/'},
-  {c:'16', n:'石岭',     jp:'石嶺駅',     url:'https://www.yui-rail.co.jp/routemap/ishimine/'},
-  {c:'17', n:'經塚',     jp:'経塚駅',     url:'https://www.yui-rail.co.jp/routemap/kyoduka/'},
-  {c:'18', n:'浦添前田', jp:'浦添前田駅', url:'https://www.yui-rail.co.jp/routemap/urasoemaeda/'},
-  {c:'19', n:'Tedako浦西', jp:'てだこ浦西駅', url:'https://www.yui-rail.co.jp/routemap/tedakouranishi/'},
-];
-
-// ---- Day2 詳細時刻表 ----
 const D2_TIMELINE = [
-  {time:'08:30', ttl:'去程集合', desc:`縣廳前觀光巴士乘降站集合出發`, transfer:true},
+  {time:'08:30', ttl:'去程集合', desc:'縣廳前觀光巴士乘降站集合出發', transfer:true},
   {time:'09:20', ttl:'NIRAIKANAI大橋（車上導覽・不停靠）', desc:'巴士減速緩行通過大橋，車上欣賞多層次夢幻大海與蔚藍天空絕景。※如遇交通路況不佳可能不會經過。', transfer:true},
   {time:'09:40', ttl:`知念岬公園（30分鐘自由活動） ${mapChip('知念岬公園','知念岬公園')}`, desc:'三面環海，海天一色，可眺望對岸神之島久高島。階梯延伸至草地，是IG、小紅書熱門打卡點。'},
   {time:'10:25', ttl:`新原海灘（45分鐘自由活動） ${mapChip('新原海灘','新原ビーチ')}`, desc:'可自由漫步沙灘，或向導遊優惠加購玻璃船票，透過透明船底欣賞珊瑚礁、熱帶魚，幸運還可能遇見海龜。玻璃船休業或停航時恕無法現場加購。'},
@@ -259,28 +491,24 @@ const D2_TIMELINE = [
   {time:'18:30', ttl:'回程', desc:'返回原集合地點，解散。', transfer:true},
 ];
 
-const DAYS = [
+const ITINERARY = [
   {
-    key:'d1', d:'Day 1', w:'7/12（日）', title:'抵達沖繩・入住旭橋', rail:['那覇機場','旭橋'],
+    key:'d1', num:'Day 1', dow:'7/12（日）', title:'抵達沖繩・入住旭橋', rail:['那覇機場','旭橋'],
     flightBadge:'✈️ 去程班機　JX870　出發 PM12:00　｜　抵達 PM2:40',
-    breakfast:'送機 Kkday AM9:15<br>Check in Naha Tokyu Rei Hotel（Klook）',
     transport:`JX870 下午2:40 抵達。國內線航廈2樓連通橋走到單軌電車（Yui-Rail）「那霸機場站」，搭乘5站至「旭橋站」（約11分鐘）→ 那霸東急REI 辦理入住。${mapChip('那霸東急REI飯店','那覇東急REIホテル')}`,
     sights:['Check in 那霸東急REI飯店','附近逛逛熟悉環境，先確認 Day2、Day3 集合點','買明日早餐','吃晚餐'],
-    ticket:'單軌票價：成人 ¥270 / 兒童 ¥140',
-    note:''
+    ticket:'單軌票價：成人 ¥270 / 兒童 ¥140', note:''
   },
   {
-    key:'d2', d:'Day 2', w:'7/13（一）', title:'沖繩南部一日遊', rail:['旭橋','縣政府前'],
-    breakfast:'自備',
+    key:'d2', num:'Day 2', dow:'7/13（一）', title:'沖繩南部一日遊', rail:['旭橋','縣政府前'],
     transport:`${transferChip} 沖繩南部一日團（Klook／易遊網）08:30 於「縣廳前觀光巴士乘降站」集合，位於 Palette Kumoji 百貨前方。${mapChip('縣廳前觀光巴士乘降站','沖縄県庁前観光バス乗降場')} 搭單軌：旭橋站 → 縣廳前站（1站，約2分鐘），或沿國道58號／單軌下方步行約8-10分鐘。`,
     timeline:D2_TIMELINE,
     sights:['回程後：逛 Palette Kumoji 百貨或直接進入國際通吃晚餐'],
-    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-143435" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-143435</a><br>易遊網 ORD0031039977，出示聯名 KLOOK 憑證：<br>憑證一：<a href="https://klook.klktech.com/voucher-new/8ac84b57-faf5-48ab-772e-a1bc1f45f9f0?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a><br>憑證二：<a href="https://klook.klktech.com/voucher-new/8ac84b57-faf5-48ab-772e-a1bc1f45f9f0?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a>`,
+    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-143435" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-143435</a><br>易遊網 ORD0031039977，出示聯名 KLOOK 憑證：<br>憑證一：<a href="#" target="_blank" rel="noopener">開啟憑證連結</a><br>憑證二：<a href="#" target="_blank" rel="noopener">開啟憑證連結</a>`,
     note:''
   },
   {
-    key:'d3', d:'Day 3', w:'7/14（二）', title:'慶良間浮潛・波上宮夕陽', rail:['旭橋','美榮橋'],
-    breakfast:'自備',
+    key:'d3', num:'Day 3', dow:'7/14（二）', title:'慶良間浮潛・波上宮夕陽', rail:['旭橋','美榮橋'],
     transport:`${transferChip} 8:30 上車，接送人員到齊後前往那霸三重城港（${mapChip('那霸三重城港','那覇マリーナ')}）。搭船30分鐘 → 浮潛約3小時 → 搭船30分鐘返回那霸三重城港，約12:30返回原集合地點。中餐後再接續下午行程。`,
     sights:[
       '那霸慶良間半日浮潛　訂單編號 ORD0031043352',
@@ -289,12 +517,11 @@ const DAYS = [
       `三重城公園（看飛機起降＋夕陽・如果浮潛很累可以直接略過） ${mapChip('三重城公園','三重城公園')}`,
       `晚餐：牧志公設市場 ${mapChip('牧志公設市場','第一牧志公設市場')} 或國際通周邊（步行或單軌一站到縣廳前／美榮橋）`
     ],
-    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-22947" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-22947</a><br>易遊網 ORD0031043352，出示聯名 KLOOK 憑證：<a href="https://klook.klktech.com/voucher-new/82c73f2b-f31f-4a40-6c99-381ec73ca090?lang=zh_TW" target="_blank" rel="noopener">開啟憑證連結</a>`,
+    ticket:`訂單參考：<a href="https://activity.eztravel.com.tw/detail/TKNKL-22947" target="_blank" rel="noopener">activity.eztravel.com.tw/detail/TKNKL-22947</a><br>易遊網 ORD0031043352，出示聯名 KLOOK 憑證：<a href="#" target="_blank" rel="noopener">開啟憑證連結</a>`,
     note:'波上宮周圍就是波之上海灘，適合帶小朋友踩沙、吹海風。'
   },
   {
-    key:'d4', d:'Day 4', w:'7/15（三）', title:'首里散策', rail:['旭橋','首里'],
-    breakfast:'自備',
+    key:'d4', num:'Day 4', dow:'7/15（三）', title:'首里散策', rail:['旭橋','首里'],
     transport:`${transferChip} 單軌旭橋站 → 首里站（約15分鐘），步行約5分鐘。`,
     sights:[
       `西來院（達摩寺）7:00 開，首里站步行約5分鐘 ${mapChip('西來院 達摩寺','西来院')}`,
@@ -305,58 +532,48 @@ const DAYS = [
     note:''
   },
   {
-    key:'d5to8', d:'Day 5-8', w:'7/16–7/19', title:'豐崎・兒童王國・壺屋・OkiMu（機動彈性四天）', rail:['旭橋','奧武山公園','牧志','Omoromachi'],
-    flexNote:'以下 4 天（7/16–7/19）順序將視天氣（尤其颱風季）機動彈性調整，故合併顯示於同一頁面，方便對照。',
-    subDays:[
-      {
-        tag:'7/16（四）', ttl:'DMM水族館・iias豐崎', breakfast:'飯店',
-        transport:`${transferChip} 飯店旁「那霸巴士總站」搭乘 TK02（Umikaji Liner／琉球巴士）直達「iias 沖繩豐崎」商場（車程約30-40分鐘）。${mapChip('那霸巴士總站','那覇バスターミナル')} ${mapChip('iias沖繩豐崎','イーアス沖縄豊崎')}`,
-        sights:[
-          'DMM Kariyushi 水族館（位於 iias豐崎2F）＆ TeamLab Future Park Okinawa',
-          'iias 沖繩豐崎 Outlet 購物',
-          `豐崎海濱公園（美麗SUN海灘）— 就在 iias 旁，步行可達，看飛機起降的白沙灘 ${mapChip('豐崎海濱公園 美麗SUNビーチ','豊崎海浜公園 美らSUNビーチ')}`
-        ],
-        ticket:'FunPASS：DMM Kariyushi水族館門票 +2　｜　Kirara Cafe 咖哩套餐 +2　｜　Kirara Cafe 甜點套餐 +1　（成人 ¥2,800–3,200／兒童4–12歲 ¥1,700–2,100）',
-        note:'iias沖繩豐崎賣場2樓有專屬通道連接 DMM Kariyushi水族館。FunPASS若沒用完：咖哩套餐一份約 NT$425，甜點套餐一份約 NT$320。'
-      },
-      {
-        tag:'7/17（五）', ttl:'沖繩兒童王國・國際通', breakfast:'飯店',
-        transport:`${transferChip} 「那霸巴士總站」${mapChip('那霸巴士總站','那覇バスターミナル')} 搭乘 23、27、31、77 或 90 號公車至「中の町」站下車（車程約50-60分鐘），下車後步行約15分鐘（或計程車）至沖繩兒童王國。`,
-        sights:[
-          `沖繩兒童王國動物園（查氣象，最晚 7/19 前去） ${mapChip('沖繩兒童王國','沖縄こどもの国')}`,
-          `晚上：國際通（步行或單軌一站到縣廳前／美榮橋） ${mapChip('國際通','国際通り')}`
-        ],
-        ticket:'FunPASS：沖繩兒童王國門票 +1（大人）　｜　16歲以上 ¥1,000／15歲以下免費',
-        note:''
-      },
-      {
-        tag:'7/18（六）', ttl:'奧武山公園・壺屋やちむん通り', breakfast:'飯店',
-        transport:`${transferChip} ① 旭橋站 → 奧武山公園站（單軌）搭1站，約2分鐘。在奧武山公園停留約1～1.5小時。<br>② 奧武山公園站 → 牧志站（單軌，同一條線不用換車）約10～12分鐘。<br>③ 牧志站 → 壺屋やちむん通り（步行）約8～10分鐘，沿路可走商店街比較有遮蔭。<br>④ 壺屋やちむん通り → 第一牧志公設市場（步行）約5分鐘。<br>⑤ 第一牧志公設市場 → 國際通（步行）約2～3分鐘。<br>⑥ 國際通慢慢逛回縣廳前或牧志站，再搭單軌回旭橋——逛到國際通西側（靠縣廳前）從縣廳前站搭車最方便；逛到中段則從牧志站搭車也可以。`,
-        sights:[
-          `奧武山公園（滑梯遊具廣場）— 適合晨跑、散步、親子遊玩與欣賞綠意 ${mapChip('奧武山公園 遊具廣場（滑梯）','26.204103,127.674623')}`,
-          `壺屋やちむん通り（陶器街） ${mapChip('壺屋やちむん通り','壺屋やちむん通り')}`,
-          `牧志公設市場周邊，連接和平通等復古商店街，可買沙翁（沖繩炸甜甜圈）等在地點心 ${mapChip('牧志公設市場','第一牧志公設市場')}`,
-          '傍晚可散步到國際通尾端或直接單軌回旭橋'
-        ],
-        ticket:'—',
-        note:''
-      },
-      {
-        tag:'7/19（日）', ttl:'OkiMu博物館・新都心公園', breakfast:'飯店',
-        transport:`${transferChip} 單軌旭橋站 → おもろまち站（歌町站，約11分鐘），步行約5分鐘。`,
-        sights:[
-          `上午：OkiMu 沖繩縣立博物館・美術館（9:00開館，恐龍化石、藝術展可慢慢逛） ${mapChip('OkiMu 沖繩縣立博物館美術館','沖縄県立博物館・美術館')}`,
-          `步行到 San-A Naha Main Place 吃午餐、逛街（超市、美食街對小孩方便） ${mapChip('San-A Naha Main Place','サンエー那覇メインプレイス')}`,
-          `下午：新都心公園（就在旁邊，太陽大先進室內，等較弱再去公園放鬆） ${mapChip('新都心公園','那覇新都心公園')}`
-        ],
-        ticket:'—',
-        note:''
-      },
-    ]
+    key:'d5', num:'Day 5', dow:'7/16（四）', title:'DMM水族館・iias豐崎', rail:['旭橋','奧武山公園'], flex:true,
+    transport:`${transferChip} 飯店旁「那霸巴士總站」搭乘 TK02（Umikaji Liner／琉球巴士）直達「iias 沖繩豐崎」商場（車程約30-40分鐘）。${mapChip('那霸巴士總站','那覇バスターミナル')} ${mapChip('iias沖繩豐崎','イーアス沖縄豊崎')}`,
+    sights:[
+      'DMM Kariyushi 水族館（位於 iias豐崎2F）＆ TeamLab Future Park Okinawa',
+      'iias 沖繩豐崎 Outlet 購物',
+      `豐崎海濱公園（美麗SUN海灘）— 就在 iias 旁，步行可達，看飛機起降的白沙灘 ${mapChip('豐崎海濱公園 美麗SUNビーチ','豊崎海浜公園 美らSUNビーチ')}`
+    ],
+    ticket:'FunPASS：DMM Kariyushi水族館門票 +2　｜　Kirara Cafe 咖哩套餐 +2　｜　Kirara Cafe 甜點套餐 +1　（成人 ¥2,800–3,200／兒童4–12歲 ¥1,700–2,100）',
+    note:'iias沖繩豐崎賣場2樓有專屬通道連接 DMM Kariyushi水族館。FunPASS若沒用完：咖哩套餐一份約 NT$425，甜點套餐一份約 NT$320。'
   },
   {
-    key:'d9', d:'Day 9', w:'7/20（一）', title:'AEON採買・返程', rail:['旭橋','小祿','那覇機場'],
-    breakfast:'有',
+    key:'d6', num:'Day 6', dow:'7/17（五）', title:'沖繩兒童王國・國際通', rail:['牧志','安里'], flex:true,
+    transport:`${transferChip} 「那霸巴士總站」${mapChip('那霸巴士總站','那覇バスターミナル')} 搭乘 23、27、31、77 或 90 號公車至「中の町」站下車（車程約50-60分鐘），下車後步行約15分鐘（或計程車）至沖繩兒童王國。`,
+    sights:[
+      `沖繩兒童王國動物園（查氣象，最晚 7/19 前去） ${mapChip('沖繩兒童王國','沖縄こどもの国')}`,
+      `晚上：國際通（步行或單軌一站到縣廳前／美榮橋） ${mapChip('國際通','国際通り')}`
+    ],
+    ticket:'FunPASS：沖繩兒童王國門票 +1（大人）　｜　16歲以上 ¥1,000／15歲以下免費', note:''
+  },
+  {
+    key:'d7', num:'Day 7', dow:'7/18（六）', title:'奧武山公園・壺屋やちむん通り', rail:['奧武山公園','牧志'], flex:true,
+    transport:`${transferChip} ① 旭橋站 → 奧武山公園站（單軌）搭1站，約2分鐘。在奧武山公園停留約1～1.5小時。<br>② 奧武山公園站 → 牧志站（單軌，同一條線不用換車）約10～12分鐘。<br>③ 牧志站 → 壺屋やちむん通り（步行）約8～10分鐘，沿路可走商店街比較有遮蔭。<br>④ 壺屋やちむん通り → 第一牧志公設市場（步行）約5分鐘。<br>⑤ 第一牧志公設市場 → 國際通（步行）約2～3分鐘。<br>⑥ 國際通慢慢逛回縣廳前或牧志站，再搭單軌回旭橋。`,
+    sights:[
+      `奧武山公園（滑梯遊具廣場）— 適合晨跑、散步、親子遊玩與欣賞綠意 ${mapChip('奧武山公園 遊具廣場','26.204103,127.674623')}`,
+      `壺屋やちむん通り（陶器街） ${mapChip('壺屋やちむん通り','壺屋やちむん通り')}`,
+      `牧志公設市場周邊，連接和平通等復古商店街，可買沙翁（沖繩炸甜甜圈）等在地點心 ${mapChip('牧志公設市場','第一牧志公設市場')}`,
+      '傍晚可散步到國際通尾端或直接單軌回旭橋'
+    ],
+    ticket:'—', note:''
+  },
+  {
+    key:'d8', num:'Day 8', dow:'7/19（日）', title:'OkiMu博物館・新都心公園', rail:['旭橋','Omoromachi'], flex:true,
+    transport:`${transferChip} 單軌旭橋站 → おもろまち站（歌町站，約11分鐘），步行約5分鐘。`,
+    sights:[
+      `上午：OkiMu 沖繩縣立博物館・美術館（9:00開館，恐龍化石、藝術展可慢慢逛） ${mapChip('OkiMu 沖繩縣立博物館美術館','沖縄県立博物館・美術館')}`,
+      `步行到 San-A Naha Main Place 吃午餐、逛街（超市、美食街對小孩方便） ${mapChip('San-A Naha Main Place','サンエー那覇メインプレイス')}`,
+      `下午：新都心公園（就在旁邊，太陽大先進室內，等較弱再去公園放鬆） ${mapChip('新都心公園','那覇新都心公園')}`
+    ],
+    ticket:'—', note:''
+  },
+  {
+    key:'d9', num:'Day 9', dow:'7/20（一）', title:'AEON採買・返程', rail:['旭橋','小祿'],
     flightBadge:'✈️ 回程班機　JX871　出發 PM3:50　｜　抵達 PM4:25',
     transport:`${transferChip} 單軌旭橋站 → 小祿站（3站，約6分鐘）→ 那覇機場站（2站，約5分鐘）。`,
     sights:[
@@ -371,126 +588,340 @@ const DAYS = [
   },
 ];
 
-function renderRail(activeStations){
-  const track = document.getElementById('railTrack');
-  track.innerHTML = RAIL.map(s => {
-    const active = activeStations.includes(s.n);
-    return `<div class="rail-seg ${active?'active':''}">
-      <span class="code">${s.c}</span>
-      <div class="rail-dot"></div>
-      <a class="name" href="${s.url}" target="_blank" rel="noopener">
-        <span class="zh">${s.n}</span>
-        <span class="jp">${s.jp}</span>
-      </a>
-    </div>`;
-  }).join('');
-}
+/* =========================================================================
+   LEDGER DATA
+========================================================================= */
+const EXPENSE_DAYS = [
+{date:'7/12', dow:'SUN', label:'Day1 ｜ 飛至日本，2:40 抵達', items:[
+  {time:'16:53', shop:'RYUBO 百貨', desc:'パンドンク麵包 ×2', amt:680, twd:150, cat:'food'},
+  {time:'18:38', shop:'RYUBO FOOD HALL', desc:'晚餐', amt:2850, twd:627, cat:'food'},
+  {time:'19:14', shop:'Francfranc', desc:'涼感毯', amt:3000, twd:660, cat:'shopping'},
+  {time:'19:52', shop:'FamilyMart 泉崎店', desc:'零食／飲品 6 項', amt:1172, twd:258, cat:'conv'},
+]},
+{date:'7/13', dow:'MON', label:'Day2 ｜ One Day tour BUS', items:[
+  {time:'12:06', shop:'沖繩世界・果物王國', desc:'百香果冰沙', amt:700, twd:154, cat:'food'},
+  {time:'12:52', shop:'沖繩世界・文化王國', desc:'色糸書籤體驗', amt:1000, twd:220, cat:'sight'},
+  {time:'13:44', shop:'満系魚市場', desc:'飯團／生魚片／綜合壽司／魚板／魷魚／烤鱈魚肉棒／麥茶／冰飲', amt:3380, twd:744, cat:'food'},
+  {time:'15:22', shop:'SKECHERS｜Ashibinaa Outlet', desc:'涼鞋＋童襪', amt:8586, twd:1889, cat:'fashion', tag:'TAX FREE'},
+  {time:'16:08', shop:'GAP OUTLET｜Ashibinaa', desc:'上衣／T恤等 7 件', amt:10796, twd:2375, cat:'fashion', tag:'40% OFF'},
+  {time:'16:21', shop:'Under Armour Factory House｜Ashibinaa Outlet', desc:'緊身短褲', amt:3410, twd:750, cat:'fashion'},
+  {time:'17:06', shop:'おきなわのおくりもの｜Umikaji Terrace', desc:'項鍊 ＠瀬長島', amt:3300, twd:726, cat:'souvenir'},
+]},
+{date:'7/14', dow:'TUE', label:'Day3 ｜ 半日浮潛＋國際通', items:[
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'旭橋駅→牧志駅 單程（大人×2＋小孩×2）', amt:760, twd:167, cat:'transport'},
+  {time:'13:58', shop:'星乃珈琲店｜那覇 Opa 店', desc:'午餐：蝦排、焗烤、沙拉、蜂蜜厚片', amt:3520, twd:774, cat:'food'},
+  {time:'18:08', shop:'Calbee+｜沖繩国際通り店', desc:'洋芋片・零食伴手禮 4 種', amt:4974, twd:1094, cat:'souvenir'},
+  {time:'晚間', shop:'マクドナルド', desc:'兒童餐＋エビフィレオ套餐', amt:1250, twd:275, cat:'food', tag:'估算'},
+  {time:'17:36', shop:'7-11｜國際通牧志店', desc:'零食', amt:162, twd:36, cat:'conv'},
+  {time:'19:37', shop:'Mi-ja｜國際通店', desc:'青蛙按鈕小玩具', amt:660, twd:145, cat:'shopping'},
+  {time:'19:49', shop:'Splash Okinawa', desc:'琉璃手鍊', amt:693, twd:152, cat:'souvenir'},
+  {time:'20:35', shop:'FamilyMart 泉崎店', desc:'蒸麵包／優格等', amt:562, twd:124, cat:'conv'},
+]},
+{date:'7/15', dow:'WED', label:'Day4 ｜ 達摩寺＋首里城＋沖繩縣立圖書館', items:[
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'旭橋駅⇔首里駅 來回（大人×2＋小孩×2）', amt:1920, twd:422, cat:'transport'},
+  {time:'08:28', shop:'7-11｜首里城下町店', desc:'優格／牛奶／飯糰', amt:561, twd:123, cat:'conv'},
+  {time:'09:46', shop:'首里城公園', desc:'入場券（成人 ¥400＋中小學生 ¥160）', amt:560, twd:123, cat:'sight'},
+  {time:'11:04', shop:'首里城公園紀念品店', desc:'風獅爺 T恤', amt:3410, twd:750, cat:'souvenir'},
+  {time:'12:01', shop:'首里社餐廳', desc:'沖繩麵', amt:1660, twd:365, cat:'food'},
+  {time:'12:53', shop:'カフェ龍潭', desc:'芒果冰沙', amt:580, twd:128, cat:'food'},
+  {time:'16:25', shop:'DAISO｜那覇 Opa 店', desc:'軟糖／扇子／修眉刀', amt:328, twd:72, cat:'shopping'},
+  {time:'18:50', shop:'星乃珈琲店｜那覇 Opa 店', desc:'晚餐：義大利麵、法式吐司等', amt:2630, twd:579, cat:'food'},
+]},
+{date:'7/16', dow:'THU', label:'Day5 ｜ DMM 水族館＋iias 沖繩豐崎 Shopping Mall', items:[
+  {time:'13:16', shop:'DMM かりゆし水族館', desc:'變色龍玩偶', amt:1460, twd:321, cat:'souvenir'},
+  {time:'13:16', shop:'DMM かりゆし水族館', desc:'置物櫃', amt:300, twd:66, cat:'sight'},
+  {time:'水族館', shop:'DMM かりゆし水族館', desc:'抽獎', amt:1500, twd:330, cat:'sight'},
+  {time:'商場', shop:'扭蛋', desc:'¥400 ×4 台', amt:1600, twd:352, cat:'shopping'},
+  {time:'商場', shop:'扭蛋', desc:'¥500 ×4 台', amt:2000, twd:440, cat:'shopping'},
+  {time:'14:52', shop:'Loft｜豊崎店', desc:'文具（摩擦筆）', amt:660, twd:145, cat:'shopping'},
+  {time:'16:17', shop:'GU｜イーアス沖縄豊崎店', desc:'服飾多件（25 點）', amt:22864, twd:5030, cat:'fashion'},
+  {time:'17:12', shop:'Honeys｜イーアス沖縄豊崎店', desc:'服飾多件（21 點）', amt:14540, twd:3199, cat:'fashion'},
+  {time:'18:05', shop:'H&M｜IIAS Okinawa Toyosaki', desc:'上衣＋童裝／睡衣 7 件', amt:10706, twd:2355, cat:'fashion', tag:'TAX FREE'},
+  {time:'18:27', shop:'SKECHERS｜イーアス沖縄豊崎', desc:'BOBS SQUAD CHAOS-CUR 童鞋', amt:8632, twd:1899, cat:'fashion', tag:'TAX FREE'},
+  {time:'18:52', shop:'CRAZY SPICE｜イーアス沖縄豊崎', desc:'晚餐：帕里帕里雞肉套餐＋起司烤餅', amt:3160, twd:695, cat:'food'},
+  {time:'公車', shop:'公車', desc:'大人來回車票 ×2', amt:1880, twd:414, cat:'transport'},
+  {time:'公車', shop:'公車', desc:'小孩來回車票 ×2', amt:940, twd:207, cat:'transport'},
+]},
+{date:'7/17', dow:'FRI', label:'Day6 ｜ 沖縄こどもの国（Okinawa Zoo & Museum）＋ビックカメラ', items:[
+  {time:'15:33', shop:'沖縄こどもの国', desc:'カメレオン 玩偶', amt:1540, twd:339, cat:'souvenir'},
+  {time:'園內', shop:'沖縄こどもの国', desc:'餵食鹿', amt:300, twd:66, cat:'sight'},
+  {time:'17:57', shop:'7-11｜沖縄園田店', desc:'葡萄乾奶油捲麵包 4 入', amt:138, twd:30, cat:'conv'},
+  {time:'11:10', shop:'MOS BURGER｜コザ店', desc:'午餐套餐（漢堡／薯條／飲品）', amt:1600, twd:352, cat:'food', tag:'交通系IC'},
+  {time:'22:06', shop:'ビックカメラ｜那覇国際通り店', desc:'吹風機', amt:12648, twd:2783, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'毛巾 A', amt:406, twd:89, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'毛巾 B', amt:406, twd:89, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'自拍棒', amt:6747, twd:1484, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'保溫水壺', amt:2671, twd:588, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'指甲刀', amt:403, twd:89, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'擦擦筆', amt:466, twd:103, cat:'shopping', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'沖繩圖案軟糖 A', amt:148, twd:33, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'沖繩圖案軟糖 B', amt:148, twd:33, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'葡萄軟糖', amt:156, twd:34, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'蒟蒻果凍 A', amt:425, twd:94, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'蒟蒻果凍 B', amt:425, twd:94, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'22:06', shop:'ビックカメラ', desc:'VC3000 喉糖', amt:209, twd:46, cat:'souvenir', tag:'免稅+7%折扣'},
+  {time:'21:03', shop:'スシロー｜那覇国際通り店', desc:'晚餐迴轉壽司（16 點）', amt:2860, twd:629, cat:'food'},
+  {time:'飲料', shop:'水', desc:'瓶裝水', amt:129, twd:28, cat:'conv'},
+  {time:'飲料', shop:'Qoo', desc:'果汁 ×2', amt:330, twd:73, cat:'conv'},
+  {time:'公車', shop:'公車', desc:'大人來回車票 ×2', amt:1920, twd:422, cat:'transport'},
+  {time:'公車', shop:'公車', desc:'幼兒來回車票 ×2', amt:960, twd:211, cat:'transport'},
+]},
+{date:'7/18', dow:'SAT', label:'Day7 ｜ 奧武山公園＋新都心 Main Place Shopping Mall', items:[
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'旭橋駅→奧武山公園駅（大人×2＋小孩×2）', amt:760, twd:167, cat:'transport'},
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'奧武山公園駅→おもろまち駅（大人×2＋小孩×2）', amt:880, twd:194, cat:'transport'},
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'おもろまち駅→旭橋駅（大人×2＋小孩×2）', amt:880, twd:194, cat:'transport'},
+  {time:'早上', shop:'奧武山公園', desc:'瓶裝水', amt:120, twd:26, cat:'conv'},
+  {time:'下午', shop:'按摩椅', desc:'休息按摩', amt:100, twd:22, cat:'sight'},
+  {time:'早上', shop:'奧武山公園', desc:'冰品', amt:150, twd:33, cat:'food'},
+  {time:'午餐', shop:'Subway', desc:'潛艇堡', amt:480, twd:106, cat:'food'},
+  {time:'午餐', shop:'松屋', desc:'牛丼', amt:950, twd:209, cat:'food'},
+  {time:'下午遊玩後', shop:'金萬', desc:'沖繩零錢包', amt:880, twd:194, cat:'souvenir'},
+  {time:'15:06', shop:'LAKOLE｜那覇メインプレイス', desc:'折疊梳、冰項圈等', amt:1100, twd:242, cat:'shopping'},
+  {time:'16:29', shop:'illusie300｜那覇メインプレイス', desc:'衛生用品 ×2、玩具', amt:990, twd:218, cat:'shopping'},
+  {time:'17:24', shop:'サンエー｜那覇メインプレイス', desc:'黏靶球標靶玩具', amt:770, twd:169, cat:'shopping'},
+  {time:'17:24後', shop:'DAISO｜那覇メインプレイス', desc:'筆記本', amt:100, twd:22, cat:'shopping'},
+  {time:'17:24後', shop:'超市｜花風', desc:'大福もち ×2', amt:453, twd:100, cat:'food'},
+  {time:'18:03', shop:'サンエー｜那覇メインプレイス', desc:'果醬、水果、甜點等 7 項', amt:2769, twd:609, cat:'conv'},
+  {time:'18:29', shop:'Honeys｜那覇メインプレイス店', desc:'裙子＋上衣 ×3', amt:5420, twd:1192, cat:'fashion'},
+  {time:'飲料', shop:'飲料', desc:'飲料一杯', amt:100, twd:22, cat:'food'},
+  {time:'19:19', shop:'HANDS CAFE｜那覇メインプレイス', desc:'晚餐：奶油培根義大利麵、咖哩、兒童蘋果餐', amt:2180, twd:480, cat:'food'},
+  {time:'19:31', shop:'3COINS+plus｜那覇メインプレイス', desc:'生活雜貨多件', amt:1980, twd:436, cat:'shopping'},
+  {time:'20:41', shop:'HUMPTY DUMPTY｜那覇メインプレイス店', desc:'陽傘 2 把（免稅後再 10% off）', amt:5584, twd:1228, cat:'shopping'},
+]},
+{date:'7/19', dow:'SUN', label:'Day8 ｜ 縣立博物館美術館＋UNIQLO＋SPORTS DEPO', items:[
+  {time:'電車', shop:'單軌電車｜ゆいレール', desc:'旭橋駅→おもろまち駅 單程（大人×2＋小孩×2）', amt:880, twd:194, cat:'transport'},
+  {time:'－', shop:'水', desc:'瓶裝水', amt:120, twd:26, cat:'conv'},
+  {time:'11:03', shop:'御計算書｜皮件店', desc:'包包', amt:3657, twd:805, cat:'shopping'},
+  {time:'11:27', shop:'沖縄県立博物館美術館', desc:'企畫展＋常設展門票（大人＋小中生）', amt:2980, twd:656, cat:'sight'},
+  {time:'13:40', shop:'カメカメキッチン', desc:'午餐：綠咖哩套餐＋蔬菜三明治套餐', amt:3180, twd:700, cat:'food'},
+  {time:'18:07', shop:'沖縄宝島｜あっぷるタウン店', desc:'兒童筷子組', amt:440, twd:97, cat:'souvenir'},
+  {time:'18:25', shop:'Can★Do｜あっぷるタウン店', desc:'筷子、米奇小物袋', amt:220, twd:48, cat:'shopping'},
+  {time:'19:11', shop:'大戸屋｜那覇あっぷるタウン店', desc:'晚餐：定食＋兒童烏龍麵', amt:1710, twd:376, cat:'food'},
+  {time:'20:02', shop:'UNIQLO｜天久りうぼう楽市店', desc:'服飾多件（15 點，已扣除代買 2 件之免稅金額 ¥3,618）', amt:13746, twd:3024, cat:'fashion', tag:'已扣代買'},
+  {time:'20:45', shop:'SPORTS DEPO｜天久店', desc:'蛋白質（原味）', amt:5184, twd:1140, cat:'health'},
+  {time:'20:45', shop:'SPORTS DEPO', desc:'蛋白質（巧克力）', amt:3999, twd:880, cat:'health'},
+  {time:'20:45', shop:'SPORTS DEPO', desc:'蛋白質（草莓）', amt:2999, twd:660, cat:'health'},
+  {time:'20:45', shop:'SPORTS DEPO', desc:'慢跑鞋', amt:27500, twd:6050, cat:'health'},
+  {time:'20:45', shop:'SPORTS DEPO', desc:'退稅折扣', amt:2680, twd:590, cat:'health', refund:true, tag:'已扣退稅'},
+  {time:'20:55', shop:'RYUBO FOOD MARKET｜天久りうぼう', desc:'牛乳布丁 ×2', amt:535, twd:118, cat:'conv'},
+  {time:'21:30', shop:'無印良品｜天久りうぼう楽市', desc:'天竺編法式袖 T 恤 ×6', amt:5400, twd:1188, cat:'fashion', tag:'TAX FREE'},
+  {time:'22:07', shop:'計程車', desc:'晚間計程車', amt:1100, twd:242, cat:'transport'},
+  {time:'22:28', shop:'LAWSON｜那覇旭町店', desc:'優格 ×2', amt:405, twd:89, cat:'conv'},
+]},
+{date:'7/20', dow:'MON', label:'Day9 ｜ 身體不適，在飯店吐了兩次，搭計程車前往機場', items:[
+  {time:'－', shop:'販賣機', desc:'運動飲料', amt:160, twd:35, cat:'conv'},
+  {time:'－', shop:'計程車', desc:'前往機場車資', amt:1700, twd:374, cat:'transport'},
+  {time:'－', shop:'機場', desc:'Phoebe 機場午餐', amt:1200, twd:264, cat:'food'},
+]},
+];
 
-function transportCard(html){
-  const clean = html.replace(transferChip,'').trim();
-  return `
-  <div class="card">
-    <h3><span class="ico">🚃</span>交通</h3>
-    <p>${clean}</p>
-  </div>`;
-}
+const PRETRIP = [
+  ['大人機票',11936,'—','ez'],
+  ['小孩機票',9560,'—','ez'],
+  ['住宿1（7/12–15）',5537,500,'klook・那覇東急REI酒店 7/12–15 不含早餐・台新卡優惠500（20260704）'],
+  ['住宿2（7/15–20）',14381,'—','ez・那覇東急REI酒店 7/15–20 含早餐'],
+  ['eSIM',0,415,'ez'],
+  ['接機',688,61,'kkday App 訂比網頁優惠'],
+  ['送機',0,'—','Richart 信用卡刷卡滿額送'],
+  ['大人保險',891,300,'國泰產險'],
+  ['小孩保險',557,'—','國泰產險'],
+  ['小孩一日遊',727,'—','ez【85折優惠】沖繩南部1日遊（含沖繩文化王國門票＆玻璃船票）'],
+  ['大人一日遊',895,261,'ez【85折優惠】沖繩南部1日遊（含沖繩文化王國門票＆玻璃船票）'],
+  ['前三排保證座位',180,'—','2 人'],
+  ['大人慶良間群島浮潛',1037,'—','ez 那霸慶良間半日浮潛體驗'],
+  ['小孩慶良間群島浮潛',858,'—','ez 那霸慶良間半日浮潛體驗'],
+  ['大人 FunPass',846,104,'沖繩最強套票 FunPass 好好玩通票｜DMM＋任選景點＋美食【C】4合1，成人 1 份'],
+  ['小孩 FunPass',525,34,'—'],
+];
 
-function ticketNoteBlock(day){
-  let out = '';
-  if(day.ticket && day.ticket!=='—'){
-    out += `<div class="card"><h3><span class="ico">🎟️</span>票券</h3><div class="ticket">${day.ticket}</div></div>`;
-  }
-  if(day.note){
-    out += `<div class="note">${day.note}</div>`;
-  }
-  return out;
-}
+const BREAKDOWN = [
+  ['服飾',104100,22902,39],
+  ['購物',8928,1964,3],
+  ['紀念品',51069,11235,19],
+  ['運動／保健品',37002,8140,14],
+  ['餐飲',35510,7812,13],
+  ['景點／體驗',11800,2596,4],
+  ['超商／零食',6473,1424,2],
+  ['單軌',6080,1338,2],
+  ['公車',5700,1254,2],
+  ['計程車',2800,616,1],
+];
 
+/* =========================================================================
+   RENDER: ITINERARY
+========================================================================= */
+function renderRoute(rail){
+  return `<div class="route-mini">🚃<span class="st">${rail[0]}</span><span class="arrow">→</span><span class="st">${rail[1]}</span></div>`;
+}
 function renderTimeline(items){
-  return `<div class="card"><h3><span class="ico">🕒</span>詳細時刻表</h3>
+  return `<div class="icard"><h4><span class="ico">🕒</span>詳細時刻表</h4>
     <ul class="timeline">
     ${items.map(it=>`<li class="${it.transfer?'transfer':''}">
       <div class="time">${it.time}</div>
       <div class="body"><span class="ttl">${it.ttl}</span>${it.desc}</div>
     </li>`).join('')}
-    </ul>
-  </div>`;
+    </ul></div>`;
 }
-
-function renderSubDay(sub){
-  return `
-  <div class="sub-day">
-    <div class="sub-day-head">
-      <span class="tag">${sub.tag}</span>
-      <span class="ttl">${sub.ttl}</span>
-    </div>
-    ${transportCard(sub.transport)}
-    <div class="card">
-      <h3><span class="ico">📌</span>景點 / 備註</h3>
-      <ul>${sub.sights.map(s=>`<li>${s}</li>`).join('')}</ul>
-    </div>
-    ${ticketNoteBlock(sub)}
-  </div>`;
-}
-
-function renderDay(day){
-  if(day.subDays){
-    return `
-    <div class="day-head">
-      <div class="num">${day.d} ｜ ${day.w}</div>
-      <h2 class="display">${day.title}</h2>
-    </div>
-    <div class="flex-banner">⛅ ${day.flexNote}</div>
-    ${day.subDays.map(renderSubDay).join('')}
-    `;
-  }
+function renderItineraryDay(day){
+  let body = '';
+  if(day.flightBadge) body += `<span class="flight-badge-inline">${day.flightBadge}</span><br>`;
+  body += renderRoute(day.rail);
+  body += `<div class="icard"><h4><span class="ico">🚃</span>交通</h4><p>${day.transport.replace(transferChip,'').trim()}</p></div>`;
+  if(day.timeline) body += renderTimeline(day.timeline);
+  body += `<div class="icard"><h4><span class="ico">📌</span>景點 / 備註</h4><ul>${day.sights.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;
+  if(day.ticket && day.ticket!=='—') body += `<div class="icard"><h4><span class="ico">🎟️</span>票券</h4><div class="ticket-box">${day.ticket}</div></div>`;
+  if(day.note) body += `<div class="icard"><div class="note-box">${day.note}</div></div>`;
 
   return `
-  <div class="day-head">
-    <div class="num">${day.d} ｜ ${day.w}</div>
-    <h2 class="display">${day.title}</h2>
-    ${day.flightBadge ? `<span class="pill flight-badge" style="display:inline-block; margin-top:8px; color:var(--deep);">${day.flightBadge}</span>` : ''}
-  </div>
-
-  ${transportCard(day.transport)}
-
-  ${day.timeline ? renderTimeline(day.timeline) : ''}
-
-  <div class="card">
-    <h3><span class="ico">📌</span>景點 / 備註</h3>
-    <ul>${day.sights.map(s=>`<li>${s}</li>`).join('')}</ul>
-  </div>
-
-  ${ticketNoteBlock(day)}
-  `;
+  <details class="day-card" data-key="${day.key}" ${day.key==='d1'?'open':''}>
+    <summary>
+      <div class="day-badge">${day.num.replace('Day ','D')}<span class="dd mono">${day.dow.slice(0,5)}</span></div>
+      <div class="day-head-text">
+        <div class="ttl">${day.title}</div>
+        <div class="sub">${day.dow}</div>
+      </div>
+      ${day.flex?'<span class="flex-badge">⛅ 彈性順序</span>':''}
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </summary>
+    <div class="day-body">${body}</div>
+  </details>`;
+}
+function buildItinerary(){
+  document.getElementById('itineraryList').innerHTML = ITINERARY.map(renderItineraryDay).join('');
 }
 
-function build(){
-  const main = document.getElementById('main');
-  const nav = document.getElementById('daynav');
-  main.innerHTML = DAYS.map((day,i)=>`<section class="day ${i===0?'active':''}" id="${day.key}">${renderDay(day)}</section>`).join('');
-  nav.innerHTML = DAYS.map((day,i)=>`
-    <button data-i="${i}" class="${i===0?'active':''}">
-      <span class="d">${day.d.replace('Day ','D')}</span>
-      <span class="w">${day.w.replace(/[（）]/g,'')}</span>
-    </button>`).join('');
+/* =========================================================================
+   RENDER: LEDGER
+========================================================================= */
+let activeCats = new Set();
+let searchText = '';
 
-  nav.querySelectorAll('button').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const i = +btn.dataset.i;
-      document.querySelectorAll('.day').forEach(el=>el.classList.remove('active'));
-      document.getElementById(DAYS[i].key).classList.add('active');
-      nav.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('railDayLabel').textContent = DAYS[i].d;
-      renderRail(DAYS[i].rail);
-      window.scrollTo({top:0, behavior:'smooth'});
+function buildChips(){
+  const row = document.getElementById('chipRow');
+  let html = `<div class="chip active" data-cat="all">全部</div>`;
+  html += CATS.map(c=>`<div class="chip" data-cat="${c.key}"><span class="dot" style="background:${c.color}"></span>${c.icon} ${c.label}</div>`).join('');
+  row.innerHTML = html;
+  row.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      const cat = chip.dataset.cat;
+      if(cat==='all'){
+        activeCats.clear();
+      } else {
+        if(activeCats.has(cat)) activeCats.delete(cat); else activeCats.add(cat);
+      }
+      renderLedger();
     });
   });
-
-  renderRail(DAYS[0].rail);
 }
-build();
+
+function itemMatches(item){
+  const catOk = activeCats.size===0 || activeCats.has(item.cat);
+  const text = (item.shop+item.desc).toLowerCase();
+  const searchOk = searchText==='' || text.includes(searchText.toLowerCase());
+  return catOk && searchOk;
+}
+
+function renderLedger(){
+  // update chip active states
+  document.querySelectorAll('.chip').forEach(chip=>{
+    const cat = chip.dataset.cat;
+    if(cat==='all') chip.classList.toggle('active', activeCats.size===0);
+    else chip.classList.toggle('active', activeCats.has(cat));
+  });
+
+  let grandJpy = 0, grandTwd = 0, count = 0;
+  let html = '';
+
+  EXPENSE_DAYS.forEach(day=>{
+    const items = day.items.filter(itemMatches);
+    if(items.length===0) return;
+
+    let dayJpy = 0, dayTwd = 0;
+    const itemsHtml = items.map(it=>{
+      const sign = it.refund ? -1 : 1;
+      dayJpy += sign*it.amt; dayTwd += sign*it.twd;
+      grandJpy += sign*it.amt; grandTwd += sign*it.twd; count++;
+      const cat = CATMAP[it.cat];
+      return `<div class="litem">
+        <div class="time mono">${it.time}</div>
+        <div class="meta">
+          <div class="shop">${it.shop}<span class="catlabel" style="background:${cat.color}22; color:${cat.color}; border:1px solid ${cat.color}55;">${cat.icon} ${cat.label}</span>${it.tag?`<span class="tag">${it.tag}</span>`:''}</div>
+          <div class="desc">${it.desc}</div>
+        </div>
+        <div class="amt-wrap">
+          <div class="amt ${it.refund?'refund':''} mono">${it.amt.toLocaleString()}</div>
+          <div class="twd">${it.refund?'－':''}NT$ ${it.twd.toLocaleString()}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    html += `
+    <div class="lday">
+      <div class="lday-head">
+        <div class="d">${day.date} <span class="dow">${day.dow}</span></div>
+        <div class="t">共 ${items.length} 筆 · <b>¥${dayJpy.toLocaleString()}</b> <span class="mono" style="font-size:12px;">NT$ ${dayTwd.toLocaleString()}</span></div>
+      </div>
+      <div class="lday-note">${day.label}</div>
+      <div class="litems">${itemsHtml}</div>
+    </div>`;
+  });
+
+  document.getElementById('ledgerList').innerHTML = html;
+  document.getElementById('emptyState').style.display = count===0 ? 'block' : 'none';
+
+  const active = activeCats.size===0 && searchText==='';
+  document.getElementById('filterTotal').innerHTML = active
+    ? `共 ${count} 筆消費 · 合計 <b>¥${grandJpy.toLocaleString()}</b>（約 NT$ ${grandTwd.toLocaleString()}）`
+    : `篩選中：${count} 筆消費 · 合計 <b>¥${grandJpy.toLocaleString()}</b>（約 NT$ ${grandTwd.toLocaleString()}）`;
+}
+
+function buildPretrip(){
+  document.getElementById('pretripBody').innerHTML = PRETRIP.map(r=>
+    `<tr><td>${r[0]}</td><td class="num">${r[1].toLocaleString()}</td><td class="num">${typeof r[2]==='number'?r[2].toLocaleString():r[2]}</td><td>${r[3]}</td></tr>`
+  ).join('');
+}
+function buildBreakdown(){
+  document.getElementById('breakdownBars').innerHTML = BREAKDOWN.map(r=>
+    `<div class="bar-row"><div class="cat">${r[0]}</div><div class="bar-track"><div class="bar-fill" style="width:${r[3]}%"></div></div><div class="val mono">¥${r[1].toLocaleString()}<small>NT$ ${r[2].toLocaleString()}</small></div></div>`
+  ).join('');
+}
+
+/* =========================================================================
+   WIRE UP
+========================================================================= */
+document.querySelectorAll('.tabbtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+document.getElementById('expandAllBtn').addEventListener('click', ()=>{
+  document.querySelectorAll('#itineraryList details').forEach(d=>d.open=true);
+});
+document.getElementById('collapseAllBtn').addEventListener('click', ()=>{
+  document.querySelectorAll('#itineraryList details').forEach(d=>d.open=false);
+});
+
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearSearch');
+searchInput.addEventListener('input', ()=>{
+  searchText = searchInput.value.trim();
+  clearBtn.style.display = searchText ? 'block' : 'none';
+  renderLedger();
+});
+clearBtn.addEventListener('click', ()=>{
+  searchInput.value=''; searchText=''; clearBtn.style.display='none'; renderLedger();
+});
+
+buildItinerary();
+buildChips();
+buildPretrip();
+buildBreakdown();
+renderLedger();
 </script>
 </body>
 </html>
