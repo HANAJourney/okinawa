@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖繩親子九日行程＆記帳｜2026.07.12–07.20</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --paper:       #E7DEC8;
+    --paper-card:  #FBF7EC;
+    --line:        #C9BC9C;
+    --teal:        #2C5F58;
+    --teal-deep:   #1E4640;
+    --coral:       #C1522A;
+    --coral-deep:  #9C3E1E;
+    --ink:         #2A2620;
+    --ink-dim:     #5B5646;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family:'Zen Kaku Gothic New', 'Noto Sans TC', sans-serif;
+    padding: 0 0 80px;
+  }
+
+  .wrap{ max-width: 880px; margin:0 auto; padding: 0 20px; }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 56px 20px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.28em;
+    font-size:12px;
+    color: var(--teal);
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  h1{
+    font-family:'Noto Serif TC', serif;
+    font-weight:700;
+    font-size: clamp(34px, 6vw, 54px);
+    margin: 10px 0 6px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .subdate{
+    font-family:'Space Mono', monospace;
+    color: var(--ink-dim);
+    font-size:14px;
+    letter-spacing:0.08em;
+  }
+
+  .trip-meta{
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.8;
+  }
+  .trip-meta b{ color: var(--teal-deep); }
+
+  .grand-summary{
+    margin: 30px auto 0;
+    max-width: 420px;
+    background: var(--coral-deep);
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 14px 28px -16px rgba(156,62,30,0.5);
+  }
+  .grand-summary .gs-label{
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: #F5D8C8;
+    text-transform: uppercase;
+  }
+  .grand-summary .gs-amount{
+    font-family:'Noto Serif TC', serif;
+    font-weight:700;
+    font-size: 30px;
+    color: #FBF3EC;
+    margin-top: 4px;
+  }
+  .grand-summary .gs-sub{
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    color: #F5D8C8;
+    margin-top: 6px;
+  }
+
+  .pretrip-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 6px;
+  }
+  .pretrip-table th{
+    text-align:left;
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--teal-deep);
+    border-bottom: 2px solid var(--teal);
+    padding: 6px 8px;
+  }
+  .pretrip-table td{
+    padding: 8px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink);
+  }
+  .pretrip-table td.num{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    text-align:right;
+    white-space:nowrap;
+    color: var(--coral-deep);
+  }
+  .pretrip-table tfoot td{
+    font-weight:700;
+    border-top: 2px solid var(--teal);
+    border-bottom:none;
+    color: var(--teal-deep);
+    font-size: 11.5px;
+  }
+  .pretrip-table tfoot td.num{ color: var(--coral-deep); font-size:14px; }
+
+  .hero-total{
+    margin: 36px auto 0;
+    max-width: 420px;
+    background: var(--teal-deep);
+    border: 1px solid var(--teal);
+    border-radius: 18px;
+    padding: 26px 20px 22px;
+    box-shadow: 0 18px 34px -18px rgba(30,70,64,0.55);
+  }
+  .hero-total .label{
+    font-size:12px;
+    letter-spacing:0.22em;
+    color: #C9E0D8;
+    font-family:'Space Mono', monospace;
+  }
+  .hero-total .amount{
+    font-family:'Noto Serif TC', serif;
+    font-weight:700;
+    font-size: 46px;
+    margin-top: 6px;
+    color: #FBF7EC;
+  }
+  .hero-total .amount span{ font-size: 22px; opacity:0.8; margin-right:4px; }
+
+  /* ---------- Stat strip ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 28px auto 0;
+    max-width: 780px;
+  }
+  .stat{
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 10px;
+    text-align:center;
+  }
+  .stat .n{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size: 18px;
+    color: var(--coral-deep);
+  }
+  .stat .l{
+    font-size: 11px;
+    color: var(--ink-dim);
+    margin-top:4px;
+    letter-spacing:0.03em;
+  }
+
+  /* ---------- Day sections ---------- */
+  .day{
+    margin-top: 46px;
+    position:relative;
+  }
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom: 2px solid var(--teal);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .day-head .d{
+    font-family:'Noto Serif TC', serif;
+    font-weight:700;
+    font-size: 22px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    color: var(--ink);
+  }
+  .day-head .d .dow{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color: var(--coral-deep);
+    font-weight:700;
+    letter-spacing:0.1em;
+  }
+  .day-head .t{
+    font-family:'Space Mono', monospace;
+    font-size: 16px;
+    color: var(--ink-dim);
+  }
+  .day-head .t b{ color: var(--teal-deep); font-size:18px; }
+
+  .day-note{
+    font-size: 12.5px;
+    color: var(--teal);
+    font-weight:700;
+    margin: -8px 0 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .day-info{
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: -6px 0 14px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+  }
+  .day-info b{ color: var(--teal-deep); }
+  .day-info a{ color: var(--coral-deep); font-weight:700; text-decoration:none; border-bottom:1px dotted var(--coral-deep); }
+  .day-info .row{ margin-bottom:2px; }
+  .day-info .row:last-child{ margin-bottom:0; }
+
+  .fx-footnote{
+    text-align:center;
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    margin: 14px 0 0;
+    font-family:'Space Mono', monospace;
+  }
+
+  .items{
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+  }
+
+  .item{
+    display:grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items:center;
+    gap: 14px;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 14px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .item:nth-child(even){
+    background: #F3EDDD;
+  }
+  .item.excluded{
+    background: repeating-linear-gradient(135deg, #EFE8D5, #EFE8D5 8px, #E7DFC9 8px, #E7DFC9 16px);
+    border-style: dashed;
+    opacity: 0.85;
+  }
+  .item:hover{
+    background: #FFFDF6;
+    border-color: var(--teal);
+  }
+  .item .time{
+    font-family:'Space Mono', monospace;
+    font-size: 12px;
+    font-weight:700;
+    color: var(--teal);
+    text-align:left;
+  }
+  .item .meta .shop{
+    font-weight:700;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .item .meta .desc{
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    margin-top: 2px;
+  }
+  .item .amt{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size: 16px;
+    color: var(--coral-deep);
+    white-space:nowrap;
+  }
+  .item .amt::before{ content:"¥"; font-size:12px; opacity:0.8; margin-right:1px; }
+  .item .amt.refund{ color: var(--teal); }
+  .item .amt.refund::before{ content:"－¥"; }
+
+  .amt-wrap{ text-align:right; }
+  .amt-twd{
+    font-family:'Space Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-dim);
+    margin-top: 1px;
+  }
+
+  .hero-total .amount-twd{
+    font-family:'Space Mono', monospace;
+    font-size: 14px;
+    color: #C9E0D8;
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+  .hero-total .fx-note{
+    font-family:'Space Mono', monospace;
+    font-size: 10.5px;
+    color: #A9CCC2;
+    margin-top: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .twd-inline{
+    font-size: 12px;
+    color: var(--ink-dim);
+    font-weight:400;
+  }
+
+  .val-twd{
+    display:block;
+    font-size: 10.5px;
+    color: var(--ink-dim);
+    font-weight:400;
+    margin-top: 1px;
+  }
+
+  .stat .n-twd{
+    display:block;
+    font-size: 10px;
+    color: var(--ink-dim);
+    font-weight:400;
+    margin-top: 2px;
+  }
+
+  .tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing:0.05em;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+    background: #F2DDD0;
+    color: var(--coral-deep);
+    border: 1px solid var(--coral);
+    font-weight:700;
+  }
+
+  /* ---------- Footer / category breakdown ---------- */
+  .breakdown{
+    margin-top: 60px;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 22px;
+  }
+  .breakdown h2{
+    font-family:'Noto Serif TC', serif;
+    font-size: 20px;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  .bar-row{
+    display:grid;
+    grid-template-columns: 90px 1fr 70px;
+    align-items:center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .bar-row .cat{ color: var(--ink-dim); font-weight:500; }
+  .bar-track{
+    height: 9px;
+    border-radius: 5px;
+    background: var(--line);
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;
+    border-radius:5px;
+    background: linear-gradient(90deg, var(--coral-deep), var(--teal));
+  }
+  .bar-row .val{
+    text-align:right;
+    font-family:'Space Mono', monospace;
+    color: var(--ink);
+    font-weight:700;
+  }
+
+  footer{
+    text-align:center;
+    margin-top: 50px;
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 560px){
+    .stats{ grid-template-columns: repeat(2,1fr); }
+    .item{ grid-template-columns: 52px 1fr auto; padding:9px 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Okinawa Family Trip · 9 Days</div>
+  <h1>沖繩親子九日行程＆記帳</h1>
+  <div class="subdate">2026.07.12 — 07.20</div>
+  <div class="trip-meta">
+    去程 <b>JX870</b>　7/12 14:40 出發　｜　回程 <b>JX871</b>　7/20 15:50<br>
+    住宿　那覇東急REI飯店（旭橋駅）｜　早餐　Day1–4 自理・Day5–9 飯店含
+  </div>
+
+  <div class="grand-summary">
+    <div class="gs-label">行程總花費 GRAND TOTAL（行前＋沖繩當地）</div>
+    <div class="gs-amount">NT$ 107,900</div>
+    <div class="gs-sub">行前費用 NT$48,618　＋　當地花費 NT$59,282</div>
+  </div>
+
+  <div class="hero-total">
+    <div class="label">沖繩當地花費 LOCAL SPENT</div>
+    <div class="amount"><span>¥</span>269,462</div>
+    <div class="amount-twd">NT$ 59,282</div>
+    <div class="fx-note">匯率換算：¥1 ＝ NT$0.22</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">9</div><div class="l">記帳天數</div></div>
+    <div class="stat"><div class="n">107</div><div class="l">消費筆數</div></div>
+    <div class="stat"><div class="n">¥29,940<span class="n-twd">NT$ 6,587</span></div><div class="l">平均日花費</div></div>
+    <div class="stat"><div class="n">¥15,000<span class="n-twd">NT$ 3,300</span></div><div class="l">交通卡儲值（未列入）</div></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Pre-Trip Costs -->
+  <div class="breakdown pretrip">
+    <h2>行前費用 Pre-Trip Costs（新台幣 NT$）</h2>
+    <table class="pretrip-table">
+      <thead>
+        <tr><th>項目</th><th>金額</th><th>扣折</th><th>備註</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>大人機票</td><td class="num">11,936</td><td class="num">—</td><td>ez</td></tr>
+        <tr><td>小孩機票</td><td class="num">9,560</td><td class="num">—</td><td>ez</td></tr>
+        <tr><td>住宿1（7/12–15）</td><td class="num">5,537</td><td class="num">500</td><td>klook・那覇東急REI酒店 7/12–15 不含早餐・台新卡優惠500（20260704）</td></tr>
+        <tr><td>住宿2（7/15–20）</td><td class="num">14,381</td><td class="num">—</td><td>ez・那覇東急REI酒店 7/15–20 含早餐</td></tr>
+        <tr><td>eSIM</td><td class="num">0</td><td class="num">415</td><td>ez</td></tr>
+        <tr><td>接機</td><td class="num">688</td><td class="num">61</td><td>kkday App 訂比網頁優惠</td></tr>
+        <tr><td>送機</td><td class="num">0</td><td class="num">—</td><td>Richart 信用卡刷卡滿額送</td></tr>
+        <tr><td>大人保險</td><td class="num">891</td><td class="num">300</td><td>國泰產險</td></tr>
+        <tr><td>小孩保險</td><td class="num">557</td><td class="num">—</td><td>國泰產險</td></tr>
+        <tr><td>小孩一日遊</td><td class="num">727</td><td class="num">—</td><td>ez【85折優惠】沖繩南部1日遊（含沖繩文化王國門票＆玻璃船票）</td></tr>
+        <tr><td>大人一日遊</td><td class="num">895</td><td class="num">261</td><td>ez【85折優惠】沖繩南部1日遊（含沖繩文化王國門票＆玻璃船票）</td></tr>
+        <tr><td>前三排保證座位</td><td class="num">180</td><td class="num">—</td><td>2 人</td></tr>
+        <tr><td>大人慶良間群島浮潛</td><td class="num">1,037</td><td class="num">—</td><td>ez 那霸慶良間半日浮潛體驗</td></tr>
+        <tr><td>小孩慶良間群島浮潛</td><td class="num">858</td><td class="num">—</td><td>ez 那霸慶良間半日浮潛體驗</td></tr>
+        <tr><td>大人 FunPass</td><td class="num">846</td><td class="num">104</td><td>沖繩最強套票 FunPass 好好玩通票｜DMM＋任選景點＋美食【C】4合1，成人 1 份・訂單編號 ORD0028990216・訂購日期 2026/02/28（成人四合一原 950，7 月已漲至 1,120；kkday 現價 NT$1,098）</td></tr>
+        <tr><td>小孩 FunPass</td><td class="num">525</td><td class="num">34</td><td>—</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>小計</td><td class="num">48,618</td><td class="num">1,675</td><td>金額為已付淨額；扣折欄為優惠／折扣參考金額</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- Breakdown -->
+  <div class="breakdown">
+    <h2>分類佔比</h2>
+    <div class="bar-row"><div class="cat">服飾</div><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div><div class="val">¥104,100<span class="val-twd">NT$ 22,902</span></div></div>
+    <div class="bar-row"><div class="cat">購物</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="val">¥8,928<span class="val-twd">NT$ 1,964</span></div></div>
+    <div class="bar-row"><div class="cat">紀念品</div><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div><div class="val">¥51,069<span class="val-twd">NT$ 11,235</span></div></div>
+    <div class="bar-row"><div class="cat">運動／保健品</div><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div><div class="val">¥37,002<span class="val-twd">NT$ 8,140</span></div></div>
+    <div class="bar-row"><div class="cat">餐飲</div><div class="bar-track"><div class="bar-fill" style="width:13%"></div></div><div class="val">¥35,510<span class="val-twd">NT$ 7,812</span></div></div>
+    <div class="bar-row"><div class="cat">景點／體驗</div><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><div class="val">¥11,800<span class="val-twd">NT$ 2,596</span></div></div>
+    <div class="bar-row"><div class="cat">超商／零食</div><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><div class="val">¥6,473<span class="val-twd">NT$ 1,424</span></div></div>
+    <div class="bar-row"><div class="cat">單軌</div><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><div class="val">¥6,080<span class="val-twd">NT$ 1,338</span></div></div>
+    <div class="bar-row"><div class="cat">公車</div><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><div class="val">¥5,700<span class="val-twd">NT$ 1,254</span></div></div>
+    <div class="bar-row"><div class="cat">計程車</div><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><div class="val">¥2,800<span class="val-twd">NT$ 616</span></div></div>
+    <p class="fx-footnote">＊交通卡儲值 ¥15,000（NT$3,300）為儲值金，未列入以上總支出與分類統計</p>
+  </div>
+
+  <!-- 07/12 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/12 <span class="dow">SUN</span></div>
+      <div class="t">共 4 筆 · <b>¥7,702</b> <span class="twd-inline">NT$ 1,694</span></div>
+    </div>
+    <div class="day-note">Day1 ｜ 飛至日本，2:40 抵達</div>
+    <div class="items">
+      <div class="item"><div class="time">16:53</div><div class="meta"><div class="shop">RYUBO 百貨</div><div class="desc">パンドンク麵包 ×2</div></div><div class="amt-wrap"><div class="amt">680</div><div class="amt-twd">NT$ 150</div></div></div>
+      <div class="item"><div class="time">18:38</div><div class="meta"><div class="shop">RYUBO FOOD HALL</div><div class="desc">晚餐</div></div><div class="amt-wrap"><div class="amt">2,850</div><div class="amt-twd">NT$ 627</div></div></div>
+      <div class="item"><div class="time">19:14</div><div class="meta"><div class="shop">Francfranc</div><div class="desc">涼感毯</div></div><div class="amt-wrap"><div class="amt">3,000</div><div class="amt-twd">NT$ 660</div></div></div>
+      <div class="item"><div class="time">19:52</div><div class="meta"><div class="shop">FamilyMart 泉崎店</div><div class="desc">零食／飲品 6 項</div></div><div class="amt-wrap"><div class="amt">1,172</div><div class="amt-twd">NT$ 258</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/13 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/13 <span class="dow">MON</span></div>
+      <div class="t">共 7 筆 · <b>¥31,172</b> <span class="twd-inline">NT$ 6,858</span></div>
+    </div>
+    <div class="day-note">Day2 ｜ One Day tour BUS</div>
+    <div class="day-info">
+      <div class="row"><b>沖繩南部一日團</b>（Klook／易遊網）　08:30 於「縣廳前觀光巴士乘降站」集合，位於 Palette Kumoji 百貨前方。</div>
+      <div class="row">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E5%BA%81%E5%89%8D%E8%A6%B3%E5%85%89%E3%83%90%E3%82%B9%E4%B9%97%E9%99%8D%E5%A0%B4" target="_blank" rel="noopener">縣廳前觀光巴士乘降站</a></div>
+      <div class="row">搭單軌：旭橋站 → 縣廳前站（1 站，約 2 分鐘），或沿國道58號／單軌下方步行約 8–10 分鐘。</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">12:06</div><div class="meta"><div class="shop">沖繩世界・果物王國</div><div class="desc">百香果冰沙</div></div><div class="amt-wrap"><div class="amt">700</div><div class="amt-twd">NT$ 154</div></div></div>
+      <div class="item"><div class="time">12:52</div><div class="meta"><div class="shop">沖繩世界・文化王國</div><div class="desc">色糸書籤體驗</div></div><div class="amt-wrap"><div class="amt">1,000</div><div class="amt-twd">NT$ 220</div></div></div>
+      <div class="item"><div class="time">13:44</div><div class="meta"><div class="shop">満系魚市場</div><div class="desc">飯團／生魚片／綜合壽司／魚板／魷魚／烤鱈魚肉棒／麥茶／冰飲</div></div><div class="amt-wrap"><div class="amt">3,380</div><div class="amt-twd">NT$ 744</div></div></div>
+      <div class="item"><div class="time">15:22</div><div class="meta"><div class="shop">SKECHERS｜Ashibinaa Outlet</div><div class="desc">涼鞋＋童襪 <span class="tag">TAX FREE</span></div></div><div class="amt-wrap"><div class="amt">8,586</div><div class="amt-twd">NT$ 1,889</div></div></div>
+      <div class="item"><div class="time">16:08</div><div class="meta"><div class="shop">GAP OUTLET｜Ashibinaa</div><div class="desc">上衣／T恤等 7 件 <span class="tag">40% OFF</span></div></div><div class="amt-wrap"><div class="amt">10,796</div><div class="amt-twd">NT$ 2,375</div></div></div>
+      <div class="item"><div class="time">16:21</div><div class="meta"><div class="shop">Under Armour Factory House｜Ashibinaa Outlet</div><div class="desc">緊身短褲</div></div><div class="amt-wrap"><div class="amt">3,410</div><div class="amt-twd">NT$ 750</div></div></div>
+      <div class="item"><div class="time">17:06</div><div class="meta"><div class="shop">おきなわのおくりもの｜Umikaji Terrace</div><div class="desc">項鍊 ＠瀬長島</div></div><div class="amt-wrap"><div class="amt">3,300</div><div class="amt-twd">NT$ 726</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/14 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/14 <span class="dow">TUE</span></div>
+      <div class="t">共 8 筆 · <b>¥12,581</b> <span class="twd-inline">NT$ 2,768</span></div>
+    </div>
+    <div class="day-note">Day3 ｜ 半日浮潛＋國際通</div>
+    <div class="day-info">
+      <div class="row">🚃 <b>單軌電車</b>：旭橋駅 → 牧志駅（單程）　大人 ¥250×2＋小孩 ¥130×2</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">旭橋駅→牧志駅 單程（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">760</div><div class="amt-twd">NT$ 167</div></div></div>
+      <div class="item"><div class="time">13:58</div><div class="meta"><div class="shop">星乃珈琲店｜那覇 Opa 店</div><div class="desc">午餐：蝦排、焗烤、沙拉、蜂蜜厚片</div></div><div class="amt-wrap"><div class="amt">3,520</div><div class="amt-twd">NT$ 774</div></div></div>
+      <div class="item"><div class="time">18:08</div><div class="meta"><div class="shop">Calbee+｜沖繩国際通り店</div><div class="desc">洋芋片・零食伴手禮 4 種</div></div><div class="amt-wrap"><div class="amt">4,974</div><div class="amt-twd">NT$ 1,094</div></div></div>
+      <div class="item"><div class="time">晚間</div><div class="meta"><div class="shop">マクドナルド</div><div class="desc">兒童餐＋エビフィレオ套餐 <span class="tag">估算</span></div></div><div class="amt-wrap"><div class="amt">1,250</div><div class="amt-twd">NT$ 275</div></div></div>
+      <div class="item"><div class="time">17:36</div><div class="meta"><div class="shop">7-11｜國際通牧志店</div><div class="desc">零食</div></div><div class="amt-wrap"><div class="amt">162</div><div class="amt-twd">NT$ 36</div></div></div>
+      <div class="item"><div class="time">19:37</div><div class="meta"><div class="shop">Mi-ja｜國際通店</div><div class="desc">青蛙按鈕小玩具</div></div><div class="amt-wrap"><div class="amt">660</div><div class="amt-twd">NT$ 145</div></div></div>
+      <div class="item"><div class="time">19:49</div><div class="meta"><div class="shop">Splash Okinawa</div><div class="desc">琉璃手鍊</div></div><div class="amt-wrap"><div class="amt">693</div><div class="amt-twd">NT$ 152</div></div></div>
+      <div class="item"><div class="time">20:35</div><div class="meta"><div class="shop">FamilyMart 泉崎店</div><div class="desc">蒸麵包／優格等</div></div><div class="amt-wrap"><div class="amt">562</div><div class="amt-twd">NT$ 124</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/15 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/15 <span class="dow">WED</span></div>
+      <div class="t">共 8 筆 · <b>¥11,649</b> <span class="twd-inline">NT$ 2,563</span></div>
+    </div>
+    <div class="day-note">Day4 ｜ 達摩寺＋首里城＋沖繩縣立圖書館</div>
+    <div class="day-info">
+      <div class="row">🎟️ <b>FunPASS</b>：首里達磨寺開運金運口金包御守 +1（大人）</div>
+      <div class="row">沖繩首里城公園收費區域門票另購：中小學生 ¥160／成人 ¥400（合計 ¥560，已列於下方入場券項目）</div>
+      <div class="row">🚃 <b>單軌電車</b>：旭橋駅 ⇔ 首里駅（來回）　大人 ¥320×2 趟×2 人＋小孩 ¥160×2 趟×2 人</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">旭橋駅⇔首里駅 來回（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">1,920</div><div class="amt-twd">NT$ 422</div></div></div>
+      <div class="item"><div class="time">08:28</div><div class="meta"><div class="shop">7-11｜首里城下町店</div><div class="desc">優格／牛奶／飯糰</div></div><div class="amt-wrap"><div class="amt">561</div><div class="amt-twd">NT$ 123</div></div></div>
+      <div class="item"><div class="time">09:46</div><div class="meta"><div class="shop">首里城公園</div><div class="desc">入場券（成人 ¥400＋中小學生 ¥160）</div></div><div class="amt-wrap"><div class="amt">560</div><div class="amt-twd">NT$ 123</div></div></div>
+      <div class="item"><div class="time">11:04</div><div class="meta"><div class="shop">首里城公園紀念品店</div><div class="desc">風獅爺 T恤</div></div><div class="amt-wrap"><div class="amt">3,410</div><div class="amt-twd">NT$ 750</div></div></div>
+      <div class="item"><div class="time">12:01</div><div class="meta"><div class="shop">首里社餐廳</div><div class="desc">沖繩麵</div></div><div class="amt-wrap"><div class="amt">1,660</div><div class="amt-twd">NT$ 365</div></div></div>
+      <div class="item"><div class="time">12:53</div><div class="meta"><div class="shop">カフェ龍潭</div><div class="desc">芒果冰沙</div></div><div class="amt-wrap"><div class="amt">580</div><div class="amt-twd">NT$ 128</div></div></div>
+      <div class="item"><div class="time">16:25</div><div class="meta"><div class="shop">DAISO｜那覇 Opa 店</div><div class="desc">軟糖／扇子／修眉刀</div></div><div class="amt-wrap"><div class="amt">328</div><div class="amt-twd">NT$ 72</div></div></div>
+      <div class="item"><div class="time">18:50</div><div class="meta"><div class="shop">星乃珈琲店｜那覇 Opa 店</div><div class="desc">晚餐：義大利麵、法式吐司等</div></div><div class="amt-wrap"><div class="amt">2,630</div><div class="amt-twd">NT$ 579</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/16 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/16 <span class="dow">THU</span></div>
+      <div class="t">共 13 筆 · <b>¥70,242</b> <span class="twd-inline">NT$ 15,453</span></div>
+    </div>
+    <div class="day-note">Day5 ｜ DMM 水族館＋iias 沖繩豐崎 Shopping Mall</div>
+    <div class="day-info">
+      <div class="row">🎟️ <b>FunPASS</b>：DMM Kariyushi 水族館門票 +2　｜　Kirara Cafe 咖哩套餐 +2　｜　Kirara Cafe 甜點套餐 +1</div>
+      <div class="row">參考現金價：成人 ¥2,800–3,200／兒童4–12歲 ¥1,700–2,100（已含於行前 FunPass 費用，當日不另計現金）</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">13:16</div><div class="meta"><div class="shop">DMM かりゆし水族館</div><div class="desc">變色龍玩偶</div></div><div class="amt-wrap"><div class="amt">1,460</div><div class="amt-twd">NT$ 321</div></div></div>
+      <div class="item"><div class="time">13:16</div><div class="meta"><div class="shop">DMM かりゆし水族館</div><div class="desc">置物櫃</div></div><div class="amt-wrap"><div class="amt">300</div><div class="amt-twd">NT$ 66</div></div></div>
+      <div class="item"><div class="time">水族館</div><div class="meta"><div class="shop">DMM かりゆし水族館</div><div class="desc">抽獎</div></div><div class="amt-wrap"><div class="amt">1,500</div><div class="amt-twd">NT$ 330</div></div></div>
+      <div class="item"><div class="time">商場</div><div class="meta"><div class="shop">扭蛋</div><div class="desc">¥400 ×4 台</div></div><div class="amt-wrap"><div class="amt">1,600</div><div class="amt-twd">NT$ 352</div></div></div>
+      <div class="item"><div class="time">商場</div><div class="meta"><div class="shop">扭蛋</div><div class="desc">¥500 ×4 台</div></div><div class="amt-wrap"><div class="amt">2,000</div><div class="amt-twd">NT$ 440</div></div></div>
+      <div class="item"><div class="time">14:52</div><div class="meta"><div class="shop">Loft｜豊崎店</div><div class="desc">文具（摩擦筆）</div></div><div class="amt-wrap"><div class="amt">660</div><div class="amt-twd">NT$ 145</div></div></div>
+      <div class="item"><div class="time">16:17</div><div class="meta"><div class="shop">GU｜イーアス沖縄豊崎店</div><div class="desc">服飾多件（25 點）</div></div><div class="amt-wrap"><div class="amt">22,864</div><div class="amt-twd">NT$ 5,030</div></div></div>
+      <div class="item"><div class="time">17:12</div><div class="meta"><div class="shop">Honeys｜イーアス沖縄豊崎店</div><div class="desc">服飾多件（21 點）</div></div><div class="amt-wrap"><div class="amt">14,540</div><div class="amt-twd">NT$ 3,199</div></div></div>
+      <div class="item"><div class="time">18:05</div><div class="meta"><div class="shop">H&amp;M｜IIAS Okinawa Toyosaki</div><div class="desc">上衣＋童裝／睡衣 7 件 <span class="tag">TAX FREE</span></div></div><div class="amt-wrap"><div class="amt">10,706</div><div class="amt-twd">NT$ 2,355</div></div></div>
+      <div class="item"><div class="time">18:27</div><div class="meta"><div class="shop">SKECHERS｜イーアス沖縄豊崎</div><div class="desc">BOBS SQUAD CHAOS-CUR 童鞋 <span class="tag">TAX FREE</span></div></div><div class="amt-wrap"><div class="amt">8,632</div><div class="amt-twd">NT$ 1,899</div></div></div>
+      <div class="item"><div class="time">18:52</div><div class="meta"><div class="shop">CRAZY SPICE｜イーアス沖縄豊崎</div><div class="desc">晚餐：帕里帕里雞肉套餐＋起司烤餅</div></div><div class="amt-wrap"><div class="amt">3,160</div><div class="amt-twd">NT$ 695</div></div></div>
+      <div class="item"><div class="time">公車</div><div class="meta"><div class="shop">公車</div><div class="desc">大人來回車票 ×2</div></div><div class="amt-wrap"><div class="amt">1,880</div><div class="amt-twd">NT$ 414</div></div></div>
+      <div class="item"><div class="time">公車</div><div class="meta"><div class="shop">公車</div><div class="desc">小孩來回車票 ×2</div></div><div class="amt-wrap"><div class="amt">940</div><div class="amt-twd">NT$ 207</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/17 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/17 <span class="dow">FRI</span></div>
+      <div class="t">共 22 筆 · <b>¥35,035</b> <span class="twd-inline">NT$ 7,708</span></div>
+    </div>
+    <div class="day-note">Day6 ｜ 沖縄こどもの国（Okinawa Zoo &amp; Museum）＋ビックカメラ</div>
+    <div class="day-info">
+      <div class="row">🎟️ <b>FunPASS</b>：沖繩兒童王國門票 +1（大人）｜16 歲以上 ¥1,000／15 歲以下免費</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">15:33</div><div class="meta"><div class="shop">沖縄こどもの国</div><div class="desc">カメレオン 玩偶</div></div><div class="amt-wrap"><div class="amt">1,540</div><div class="amt-twd">NT$ 339</div></div></div>
+      <div class="item"><div class="time">園內</div><div class="meta"><div class="shop">沖縄こどもの国</div><div class="desc">餵食鹿</div></div><div class="amt-wrap"><div class="amt">300</div><div class="amt-twd">NT$ 66</div></div></div>
+      <div class="item"><div class="time">17:57</div><div class="meta"><div class="shop">7-11｜沖縄園田店</div><div class="desc">葡萄乾奶油捲麵包 4 入</div></div><div class="amt-wrap"><div class="amt">138</div><div class="amt-twd">NT$ 30</div></div></div>
+      <div class="item"><div class="time">11:10</div><div class="meta"><div class="shop">MOS BURGER｜コザ店</div><div class="desc">午餐套餐（漢堡／薯條／飲品）<span class="tag">交通系IC</span></div></div><div class="amt-wrap"><div class="amt">1,600</div><div class="amt-twd">NT$ 352</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ｜那覇国際通り店</div><div class="desc">吹風機 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">12,648</div><div class="amt-twd">NT$ 2,783</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">毛巾 A <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">406</div><div class="amt-twd">NT$ 89</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">毛巾 B <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">406</div><div class="amt-twd">NT$ 89</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">自拍棒 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">6,747</div><div class="amt-twd">NT$ 1,484</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">保溫水壺 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">2,671</div><div class="amt-twd">NT$ 588</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">指甲刀 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">403</div><div class="amt-twd">NT$ 89</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">擦擦筆 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">466</div><div class="amt-twd">NT$ 103</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">沖繩圖案軟糖 A <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">148</div><div class="amt-twd">NT$ 33</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">沖繩圖案軟糖 B <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">148</div><div class="amt-twd">NT$ 33</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">葡萄軟糖 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">156</div><div class="amt-twd">NT$ 34</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">蒟蒻果凍 A <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">425</div><div class="amt-twd">NT$ 94</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">蒟蒻果凍 B <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">425</div><div class="amt-twd">NT$ 94</div></div></div>
+      <div class="item"><div class="time">22:06</div><div class="meta"><div class="shop">ビックカメラ</div><div class="desc">VC3000 喉糖 <span class="tag">免稅+7%折扣</span></div></div><div class="amt-wrap"><div class="amt">209</div><div class="amt-twd">NT$ 46</div></div></div>
+      <div class="item"><div class="time">21:03</div><div class="meta"><div class="shop">スシロー｜那覇国際通り店</div><div class="desc">晚餐迴轉壽司（16 點）</div></div><div class="amt-wrap"><div class="amt">2,860</div><div class="amt-twd">NT$ 629</div></div></div>
+      <div class="item"><div class="time">飲料</div><div class="meta"><div class="shop">水</div><div class="desc">瓶裝水</div></div><div class="amt-wrap"><div class="amt">129</div><div class="amt-twd">NT$ 28</div></div></div>
+      <div class="item"><div class="time">飲料</div><div class="meta"><div class="shop">Qoo</div><div class="desc">果汁 ×2</div></div><div class="amt-wrap"><div class="amt">330</div><div class="amt-twd">NT$ 73</div></div></div>
+      <div class="item"><div class="time">公車</div><div class="meta"><div class="shop">公車</div><div class="desc">大人來回車票 ×2</div></div><div class="amt-wrap"><div class="amt">1,920</div><div class="amt-twd">NT$ 422</div></div></div>
+      <div class="item"><div class="time">公車</div><div class="meta"><div class="shop">公車</div><div class="desc">幼兒來回車票 ×2</div></div><div class="amt-wrap"><div class="amt">960</div><div class="amt-twd">NT$ 211</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/18 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/18 <span class="dow">SAT</span></div>
+      <div class="t">共 20 筆 · <b>¥26,646</b> <span class="twd-inline">NT$ 5,862</span></div>
+    </div>
+    <div class="day-note">Day7 ｜ 奧武山公園＋新都心 Main Place Shopping Mall</div>
+    <div class="day-info">
+      <div class="row">🚃 <b>單軌電車</b>：旭橋駅 → 奧武山公園駅 → おもろまち駅 → 旭橋駅，共 3 段</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">旭橋駅→奧武山公園駅（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">760</div><div class="amt-twd">NT$ 167</div></div></div>
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">奧武山公園駅→おもろまち駅（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">880</div><div class="amt-twd">NT$ 194</div></div></div>
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">おもろまち駅→旭橋駅（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">880</div><div class="amt-twd">NT$ 194</div></div></div>
+      <div class="item"><div class="time">早上</div><div class="meta"><div class="shop">奧武山公園</div><div class="desc">瓶裝水</div></div><div class="amt-wrap"><div class="amt">120</div><div class="amt-twd">NT$ 26</div></div></div>
+      <div class="item"><div class="time">下午</div><div class="meta"><div class="shop">按摩椅</div><div class="desc">休息按摩</div></div><div class="amt-wrap"><div class="amt">100</div><div class="amt-twd">NT$ 22</div></div></div>
+      <div class="item"><div class="time">早上</div><div class="meta"><div class="shop">奧武山公園</div><div class="desc">冰品</div></div><div class="amt-wrap"><div class="amt">150</div><div class="amt-twd">NT$ 33</div></div></div>
+      <div class="item"><div class="time">午餐</div><div class="meta"><div class="shop">Subway</div><div class="desc">潛艇堡</div></div><div class="amt-wrap"><div class="amt">480</div><div class="amt-twd">NT$ 106</div></div></div>
+      <div class="item"><div class="time">午餐</div><div class="meta"><div class="shop">松屋</div><div class="desc">牛丼</div></div><div class="amt-wrap"><div class="amt">950</div><div class="amt-twd">NT$ 209</div></div></div>
+      <div class="item"><div class="time">下午遊玩後</div><div class="meta"><div class="shop">金萬</div><div class="desc">沖繩零錢包</div></div><div class="amt-wrap"><div class="amt">880</div><div class="amt-twd">NT$ 194</div></div></div>
+      <div class="item"><div class="time">15:06</div><div class="meta"><div class="shop">LAKOLE｜那覇メインプレイス</div><div class="desc">折疊梳、冰項圈等</div></div><div class="amt-wrap"><div class="amt">1,100</div><div class="amt-twd">NT$ 242</div></div></div>
+      <div class="item"><div class="time">16:29</div><div class="meta"><div class="shop">illusie300｜那覇メインプレイス</div><div class="desc">衛生用品 ×2、玩具</div></div><div class="amt-wrap"><div class="amt">990</div><div class="amt-twd">NT$ 218</div></div></div>
+      <div class="item"><div class="time">17:24</div><div class="meta"><div class="shop">サンエー｜那覇メインプレイス</div><div class="desc">黏靶球標靶玩具</div></div><div class="amt-wrap"><div class="amt">770</div><div class="amt-twd">NT$ 169</div></div></div>
+      <div class="item"><div class="time">17:24後</div><div class="meta"><div class="shop">DAISO｜那覇メインプレイス</div><div class="desc">筆記本</div></div><div class="amt-wrap"><div class="amt">100</div><div class="amt-twd">NT$ 22</div></div></div>
+      <div class="item"><div class="time">17:24後</div><div class="meta"><div class="shop">超市｜花風</div><div class="desc">大福もち ×2</div></div><div class="amt-wrap"><div class="amt">453</div><div class="amt-twd">NT$ 100</div></div></div>
+      <div class="item"><div class="time">18:03</div><div class="meta"><div class="shop">サンエー｜那覇メインプレイス</div><div class="desc">果醬、水果、甜點等 7 項</div></div><div class="amt-wrap"><div class="amt">2,769</div><div class="amt-twd">NT$ 609</div></div></div>
+      <div class="item"><div class="time">18:29</div><div class="meta"><div class="shop">Honeys｜那覇メインプレイス店</div><div class="desc">裙子＋上衣 ×3</div></div><div class="amt-wrap"><div class="amt">5,420</div><div class="amt-twd">NT$ 1,192</div></div></div>
+      <div class="item"><div class="time">飲料</div><div class="meta"><div class="shop">飲料</div><div class="desc">飲料一杯</div></div><div class="amt-wrap"><div class="amt">100</div><div class="amt-twd">NT$ 22</div></div></div>
+      <div class="item"><div class="time">19:19</div><div class="meta"><div class="shop">HANDS CAFE｜那覇メインプレイス</div><div class="desc">晚餐：奶油培根義大利麵、咖哩、兒童蘋果餐</div></div><div class="amt-wrap"><div class="amt">2,180</div><div class="amt-twd">NT$ 480</div></div></div>
+      <div class="item"><div class="time">19:31</div><div class="meta"><div class="shop">3COINS+plus｜那覇メインプレイス</div><div class="desc">生活雜貨多件</div></div><div class="amt-wrap"><div class="amt">1,980</div><div class="amt-twd">NT$ 436</div></div></div>
+      <div class="item"><div class="time">20:41</div><div class="meta"><div class="shop">HUMPTY DUMPTY｜那覇メインプレイス店</div><div class="desc">陽傘 2 把（免稅後再 10% off）</div></div><div class="amt-wrap"><div class="amt">5,584</div><div class="amt-twd">NT$ 1,228</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/19 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/19 <span class="dow">SUN</span></div>
+      <div class="t">共 18 筆 · <b>¥71,375</b> <span class="twd-inline">NT$ 15,703</span></div>
+    </div>
+    <div class="day-note">Day8 ｜ 縣立博物館美術館＋UNIQLO＋SPORTS DEPO</div>
+    <div class="day-info">
+      <div class="row">🚃 <b>單軌電車</b>：旭橋駅 → おもろまち駅（單程）　大人 ¥290×2＋小孩 ¥150×2</div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="time">電車</div><div class="meta"><div class="shop">單軌電車｜ゆいレール</div><div class="desc">旭橋駅→おもろまち駅 單程（大人×2＋小孩×2）</div></div><div class="amt-wrap"><div class="amt">880</div><div class="amt-twd">NT$ 194</div></div></div>
+      <div class="item"><div class="time">－</div><div class="meta"><div class="shop">水</div><div class="desc">瓶裝水</div></div><div class="amt-wrap"><div class="amt">120</div><div class="amt-twd">NT$ 26</div></div></div>
+      <div class="item"><div class="time">11:03</div><div class="meta"><div class="shop">御計算書｜皮件店</div><div class="desc">包包</div></div><div class="amt-wrap"><div class="amt">3,657</div><div class="amt-twd">NT$ 805</div></div></div>
+      <div class="item"><div class="time">11:27</div><div class="meta"><div class="shop">沖縄県立博物館美術館</div><div class="desc">企畫展＋常設展門票（大人＋小中生）</div></div><div class="amt-wrap"><div class="amt">2,980</div><div class="amt-twd">NT$ 656</div></div></div>
+      <div class="item"><div class="time">13:40</div><div class="meta"><div class="shop">カメカメキッチン</div><div class="desc">午餐：綠咖哩套餐＋蔬菜三明治套餐</div></div><div class="amt-wrap"><div class="amt">3,180</div><div class="amt-twd">NT$ 700</div></div></div>
+      <div class="item"><div class="time">18:07</div><div class="meta"><div class="shop">沖縄宝島｜あっぷるタウン店</div><div class="desc">兒童筷子組</div></div><div class="amt-wrap"><div class="amt">440</div><div class="amt-twd">NT$ 97</div></div></div>
+      <div class="item"><div class="time">18:25</div><div class="meta"><div class="shop">Can★Do｜あっぷるタウン店</div><div class="desc">筷子、米奇小物袋</div></div><div class="amt-wrap"><div class="amt">220</div><div class="amt-twd">NT$ 48</div></div></div>
+      <div class="item"><div class="time">19:11</div><div class="meta"><div class="shop">大戸屋｜那覇あっぷるタウン店</div><div class="desc">晚餐：定食＋兒童烏龍麵</div></div><div class="amt-wrap"><div class="amt">1,710</div><div class="amt-twd">NT$ 376</div></div></div>
+      <div class="item"><div class="time">20:02</div><div class="meta"><div class="shop">UNIQLO｜天久りうぼう楽市店</div><div class="desc">服飾多件（15 點，已扣除代買 2 件之免稅金額 ¥3,618）<span class="tag">已扣代買</span></div></div><div class="amt-wrap"><div class="amt">13,746</div><div class="amt-twd">NT$ 3,024</div></div></div>
+      <div class="item"><div class="time">20:45</div><div class="meta"><div class="shop">SPORTS DEPO｜天久店</div><div class="desc">蛋白質（原味）</div></div><div class="amt-wrap"><div class="amt">5,184</div><div class="amt-twd">NT$ 1,140</div></div></div>
+      <div class="item"><div class="time">20:45</div><div class="meta"><div class="shop">SPORTS DEPO</div><div class="desc">蛋白質（巧克力）</div></div><div class="amt-wrap"><div class="amt">3,999</div><div class="amt-twd">NT$ 880</div></div></div>
+      <div class="item"><div class="time">20:45</div><div class="meta"><div class="shop">SPORTS DEPO</div><div class="desc">蛋白質（草莓）</div></div><div class="amt-wrap"><div class="amt">2,999</div><div class="amt-twd">NT$ 660</div></div></div>
+      <div class="item"><div class="time">20:45</div><div class="meta"><div class="shop">SPORTS DEPO</div><div class="desc">慢跑鞋</div></div><div class="amt-wrap"><div class="amt">27,500</div><div class="amt-twd">NT$ 6,050</div></div></div>
+      <div class="item"><div class="time">20:45</div><div class="meta"><div class="shop">SPORTS DEPO</div><div class="desc">退稅折扣 <span class="tag">已扣退稅</span></div></div><div class="amt-wrap"><div class="amt refund">2,680</div><div class="amt-twd">－NT$ 590</div></div></div>
+      <div class="item"><div class="time">20:55</div><div class="meta"><div class="shop">RYUBO FOOD MARKET｜天久りうぼう</div><div class="desc">牛乳布丁 ×2</div></div><div class="amt-wrap"><div class="amt">535</div><div class="amt-twd">NT$ 118</div></div></div>
+      <div class="item"><div class="time">21:30</div><div class="meta"><div class="shop">無印良品｜天久りうぼう楽市</div><div class="desc">天竺編法式袖 T 恤 ×6 <span class="tag">TAX FREE</span></div></div><div class="amt-wrap"><div class="amt">5,400</div><div class="amt-twd">NT$ 1,188</div></div></div>
+      <div class="item"><div class="time">22:07</div><div class="meta"><div class="shop">計程車</div><div class="desc">晚間計程車</div></div><div class="amt-wrap"><div class="amt">1,100</div><div class="amt-twd">NT$ 242</div></div></div>
+      <div class="item"><div class="time">22:28</div><div class="meta"><div class="shop">LAWSON｜那覇旭町店</div><div class="desc">優格 ×2</div></div><div class="amt-wrap"><div class="amt">405</div><div class="amt-twd">NT$ 89</div></div></div>
+    </div>
+  </div>
+
+  <!-- 07/20 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="d">7/20 <span class="dow">MON</span></div>
+      <div class="t">共 3 筆 · <b>¥3,060</b> <span class="twd-inline">NT$ 673</span></div>
+    </div>
+    <div class="day-note">Day9 ｜ 身體不適，在飯店吐了兩次，搭計程車前往機場</div>
+    <div class="items">
+      <div class="item"><div class="time">－</div><div class="meta"><div class="shop">販賣機</div><div class="desc">運動飲料</div></div><div class="amt-wrap"><div class="amt">160</div><div class="amt-twd">NT$ 35</div></div></div>
+      <div class="item"><div class="time">－</div><div class="meta"><div class="shop">計程車</div><div class="desc">前往機場車資</div></div><div class="amt-wrap"><div class="amt">1,700</div><div class="amt-twd">NT$ 374</div></div></div>
+      <div class="item"><div class="time">－</div><div class="meta"><div class="shop">機場</div><div class="desc">Phoebe 機場午餐</div></div><div class="amt-wrap"><div class="amt">1,200</div><div class="amt-twd">NT$ 264</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>OKINAWA · JUL 2026 · RECORDED FROM RECEIPTS</footer>
+
+</body>
+</html>
