@@ -7,20 +7,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:      #F2E9D8;
-    --paper-card: #FFFCF4;
-    --paper-soft: #EAE0C7;
-    --ink:        #232A28;
-    --ink-dim:    #6B6656;
-    --deep:       #0E4F5C;
-    --deep2:      #0A3A45;
-    --coral:      #D95A34;
-    --coral-deep: #A83F22;
-    --sun:        #E8A23B;
-    --line:       #DCCFA6;
-    --good:       #2E8F6B;
-    --shadow: 0 10px 26px -14px rgba(14,79,92,0.28);
+:root{
+    /* 清爽的沙灘與白雲背景 */
+    --paper:      #F4F7F6;
+    --paper-card: #FFFFFF;
+    --paper-soft: #E8F0EE;
+    
+    /* 深灰藍色的文字 */
+    --ink:        #2C3E50;
+    --ink-dim:    #7F8C8D;
+    
+    /* 海洋藍主色 */
+    --deep:       #1A6EA0;
+    --deep2:      #114B6E;
+    
+    /* 扶桑花紅/珊瑚色點綴 */
+    --coral:      #E0566B;
+    --coral-deep: #B83B4F;
+    
+    /* 陽光黃 */
+    --sun:        #F39C12;
+    --line:       #D5E1DF;
+    --good:       #27AE60;
+    
+    /* 陰影也跟著調整為偏藍的色調 */
+    --shadow: 0 10px 26px -14px rgba(26, 110, 160, 0.25);
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
@@ -350,12 +361,32 @@
     font-size:11px; color:var(--ink-dim); letter-spacing:.08em;
   }
 
-  @media (max-width:560px){
-    .ledger-summary{ grid-template-columns:repeat(2,1fr); }
-    .litem{ grid-template-columns:46px 1fr auto; padding:8px 10px; }
-    .total-strip{ flex-direction:column; }
-    .filter-bar{ top:53px; }
+@media (max-width: 768px) {
+  /* 將原本的 560px 放寬至 768px，涵蓋所有平板與手機 */
+  
+  /* 其他維持原本手機版設定 */
+  .ledger-summary { grid-template-columns: repeat(2,1fr); }
+  .litem { grid-template-columns: 46px 1fr auto; padding: 8px 10px; }
+  .filter-bar { top: 53px; }
+
+  /* 針對 Total 區塊改為橫向滑動 */
+  .total-strip { 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    padding-bottom: 8px; /* 預留捲軸空間 */
+    /* 隱藏預設捲軸讓視覺更乾淨 (針對不同瀏覽器) */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
   }
+  .total-strip::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .total-card { 
+    flex: 0 0 85%; /* 讓單一卡片佔據 85% 寬度，露出一點下一張卡片暗示可滑動 */
+    min-width: 240px; 
+  }
+}
 </style>
 </head>
 <body>
@@ -391,7 +422,7 @@
 
 <div class="tabbar-wrap">
   <div class="tabbar">
-    <button class="tabbtn active" data-tab="itinerary"><span class="ic">🗺️</span>行程<span class="stamp">ITINERARY</span></button>
+    <button class="tabbtn active" data-tab="itinerary"><span class="ic">🗺️</span>預計行程<span class="stamp">ITINERARY</span></button>
     <button class="tabbtn" data-tab="ledger"><span class="ic">💴</span>記帳與統計<span class="stamp">LEDGER</span></button>
   </div>
 </div>
@@ -509,7 +540,7 @@ const ITINERARY = [
   },
   {
     key:'d3', num:'Day 3', dow:'7/14（二）', title:'慶良間浮潛・波上宮夕陽', rail:['旭橋','美榮橋'],
-    transport:`${transferChip} 8:30 上車，接送人員到齊後前往那霸三重城港（${mapChip('那霸三重城港','那覇マリーナ')}）。搭船30分鐘 → 浮潛約3小時 → 搭船30分鐘返回那霸三重城港，約12:30返回原集合地點。中餐後再接續下午行程。`,
+    transport:`${transferChip} 8:30 上車，接送人員到齊後前往那霸三重城港（${mapChip('那霸三重城港','那覇マリーナ')}）。搭船30分鐘 → 浮潛約30分鐘 → 搭船30分鐘返回那霸三重城港，約12:30返回原集合地點。中餐後再接續下午行程。`,
     sights:[
       '那霸慶良間半日浮潛　訂單編號 ORD0031043352',
       `下午：波上宮 ${mapChip('波上宮','波上宮')}　— 建於懸崖上，可眺望湛藍海景，步行約15分鐘可達，適合帶小朋友`,
@@ -522,7 +553,7 @@ const ITINERARY = [
   },
   {
     key:'d4', num:'Day 4', dow:'7/15（三）', title:'首里散策', rail:['旭橋','首里'],
-    transport:`${transferChip} 單軌旭橋站 → 首里站（約15分鐘），步行約5分鐘。`,
+    transport:`${transferChip} 單軌旭橋站 → 首里站（約15分鐘），步行約15分鐘。`,
     sights:[
       `西來院（達摩寺）7:00 開，首里站步行約5分鐘 ${mapChip('西來院 達摩寺','西来院')}`,
       `首里城收費區（另買票）／首里城外圍／金城町石疊道 ${mapChip('首里城公園','首里城公園')}`,
@@ -598,7 +629,7 @@ const EXPENSE_DAYS = [
   {time:'19:14', shop:'Francfranc', desc:'涼感毯', amt:3000, twd:660, cat:'shopping'},
   {time:'19:52', shop:'FamilyMart 泉崎店', desc:'零食／飲品 6 項', amt:1172, twd:258, cat:'conv'},
 ]},
-{date:'7/13', dow:'MON', label:'Day2 ｜ One Day tour BUS', items:[
+{date:'7/13', dow:'MON', label:'Day2 ｜ One Day BUS tour ', items:[
   {time:'12:06', shop:'沖繩世界・果物王國', desc:'百香果冰沙', amt:700, twd:154, cat:'food'},
   {time:'12:52', shop:'沖繩世界・文化王國', desc:'色糸書籤體驗', amt:1000, twd:220, cat:'sight'},
   {time:'13:44', shop:'満系魚市場', desc:'飯團／生魚片／綜合壽司／魚板／魷魚／烤鱈魚肉棒／麥茶／冰飲', amt:3380, twd:744, cat:'food'},
