@@ -362,30 +362,26 @@
   }
 
 @media (max-width: 768px) {
-  /* 將原本的 560px 放寬至 768px，涵蓋所有平板與手機 */
-  
-  /* 其他維持原本手機版設定 */
   .ledger-summary { grid-template-columns: repeat(2,1fr); }
   .litem { grid-template-columns: 46px 1fr auto; padding: 8px 10px; }
   .filter-bar { top: 53px; }
 
-  /* 針對 Total 區塊改為橫向滑動 */
+  /* 提早變成垂直堆疊，並縮減間距 */
   .total-strip { 
-    flex-wrap: nowrap; 
-    overflow-x: auto; 
-    padding-bottom: 8px; /* 預留捲軸空間 */
-    /* 隱藏預設捲軸讓視覺更乾淨 (針對不同瀏覽器) */
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-  }
-  .total-strip::-webkit-scrollbar {
-    display: none; 
+    flex-direction: column; 
+    gap: 8px;
+    margin-top: 16px;
   }
   
-  .total-card { 
-    flex: 0 0 85%; /* 讓單一卡片佔據 85% 寬度，露出一點下一張卡片暗示可滑動 */
-    min-width: 240px; 
+  /* 稍微縮小手機版的字體與內距，讓畫面更精緻 */
+  .total-card {
+    padding: 10px 14px;
+    flex: auto;
   }
+  .total-card .v { 
+    font-size: 20px; 
+  }
+}
 }
 </style>
 </head>
